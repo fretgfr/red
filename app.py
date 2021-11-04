@@ -1,5 +1,7 @@
 from flask import Flask, render_template, url_for
 import os
+from lib import Agent, Client, Company, Listing
+
 
 app = Flask(__name__)
 
