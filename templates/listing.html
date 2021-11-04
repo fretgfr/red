@@ -1,0 +1,20 @@
+{# 
+    Required vars:
+    - images (Should be a list of URLs)
+    - description
+ #}
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Content of the page should go here -->
+
+    <p> {{ description }} </p>
+
+    
+    {% for image_url in images %}
+    <img src="{{ image_url }}">
+    {% endfor %}
+
+{% endblock content %}
