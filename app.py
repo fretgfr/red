@@ -18,6 +18,8 @@ def listing_view(listing_id: str):
         rendered html template
     """
 
+
+
     kwargs = {
         "description": "Test Desc",
         "images": [f"/static/{listing_id}/images/{item}" for item in os.listdir(f"./static/{listing_id}/images")]
