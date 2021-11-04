@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import mysql.connector
 
 @dataclass
 class Agent():
@@ -24,4 +25,3 @@ class Agent():
     def from_license_number(cls, license_number: int) -> cls:
         """Returns an agent from the database based on their license number"""
         pass
-    

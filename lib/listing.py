@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from datetime import date
+import mysql.connector
 
 @dataclass
 class Listing:

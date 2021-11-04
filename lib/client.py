@@ -1,4 +1,6 @@
 from dataclasses import dataclass
+import mysql.connector
+
 
 @dataclass
 class Client():
