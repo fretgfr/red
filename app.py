@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request, redirect
 import os
 from lib import Agent, Client, Company, Listing
 
@@ -57,7 +57,9 @@ def agent(agent_id):
         return "Invalid agent id" #Probaby substitute with a 404 page
     
     agent = Agent.from_license_number(agent_id)
-    return render_template("agent.html", agent=agent)
+    company = Company.from_company_id(agent.company_id)
+
+    return render_template("agent.html", agent=agent, company=company)
 
 @app.route("/client/<client_id>")
 def client(client_id: str):
@@ -70,7 +72,7 @@ def client(client_id: str):
         rendered html template
     """
 
-    try: 
+    try:
         client_id = int(client_id)
     except ValueError:
         return "Invalid client id" #Probaby substitute with a 404 page
@@ -88,7 +90,7 @@ def company(company_id: str):
     Returns:
         rendered html template
     """        
-    
+
     try: 
         company_id = int(company_id)
     except ValueError:
@@ -97,6 +99,21 @@ def company(company_id: str):
     company = Company.from_company_id(company_id)
 
     return render_template("company.html", company=company) #TODO doesn't exist yet
+
+@app.route("/add_listing", methods=["GET", "POST"])
+def add_listing():
+    """Renders the template to add a listing
+
+    Returns:
+        rendered html template
+    """
+
+    if request.method == "POST": #if they're adding a listing
+        req = request.form
+
+        return redirect(request.url)
+
+    return render_template("add_listing.html") #They're just viewing the form
 
 
 if __name__ == "__main__":
