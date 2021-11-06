@@ -110,8 +110,16 @@ def add_listing():
 
     if request.method == "POST": #if they're adding a listing
         req = request.form
+        agent_license_number = req["agent_license_number"]
+        satus = req["status"]
+        description = req["description"]
+        sale_yn = req["saleyn"]
+        rent_yn = req["rentyn"]
+        
 
-        return redirect(request.url)
+
+
+        return "Operation Successful" #Ideally this should take them to the page for the created listing
 
     return render_template("add_listing.html") #They're just viewing the form
 
