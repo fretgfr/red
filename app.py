@@ -138,7 +138,7 @@ def add_listing():
             acreage = req.get("acreage")
             year_built = req.get("year_built")
             colist_agent_id = req.get("colist_agent_id")
-        except Exception:
+        except ValueError:
             print("Something went wrong here. Most likely in a conversion.")
             return False
 
