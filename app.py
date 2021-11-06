@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, request, redirect
 import os
 from datetime import datetime, date
 import json
-import mysql.conncection as con
+import mysql.connector as con
 
 from lib import Agent, Client, Company, Listing, convert_yn
 
