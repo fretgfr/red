@@ -1,16 +1,3 @@
-//price
-//address_number
-//address_zip
-//bedrooms
-//full_bathrooms
-//half_bathrooms
-//sqft
-//year_built
-
-//carcount
-//acreage
-
-
 //NOTE: This probably needs optimization seeing as I wrote this at 2 am
 //and I'm tired.
 
@@ -21,9 +8,6 @@ function isNumInt(num) {
 function isNumFloat(num) {
     return (!isNaN(parseFloat(num)) && isFinite(num));
 }
-
-
-
 
 const form = document.getElementById("add_listing");
 form.addEventListener("submit", function (event) {
@@ -60,7 +44,7 @@ form.addEventListener("submit", function (event) {
             alert("Invalid entry for " + val.name);
         }
     });
-    
+
     if (error) {
         event.preventDefault();
     }
