@@ -105,8 +105,8 @@ def add_listing():
     """Renders the template to add a listing
 
     Returns:
-        rendered html template
-    """
+    rendered html template
+        """
 
     if request.method == "POST": #if they're adding a listing
         req = request.form
@@ -117,4 +117,5 @@ def add_listing():
 
 
 if __name__ == "__main__":
+    
     app.run()

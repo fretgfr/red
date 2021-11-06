@@ -18,6 +18,6 @@ class Company():
     agent_ids: list
 
     @classmethod
-    def from_company_id(cls, company_id: int) -> cls:
+    def from_company_id(cls, company_id: int):
         """Returns a company object from the database"""
         pass

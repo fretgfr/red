@@ -22,6 +22,6 @@ class Agent():
     listing_ids: list
 
     @classmethod
-    def from_license_number(cls, license_number: int) -> cls:
+    def from_license_number(cls, license_number: int):
         """Returns an agent from the database based on their license number"""
         pass

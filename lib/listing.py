@@ -39,6 +39,6 @@ class Listing:
     image_link: str
 
     @classmethod
-    def from_listing_id(cls, id: int) -> cls:
+    def from_listing_id(cls, id: int):
         """Returns a listing from the database"""
         pass

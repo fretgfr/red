@@ -16,6 +16,6 @@ class Client():
     listing_mls_numbers: list
 
     @classmethod
-    def from_client_id(cls, client_id: int) -> cls:
+    def from_client_id(cls, client_id: int):
         """ Returns a client from the database """
         pass
