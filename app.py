@@ -109,16 +109,40 @@ def add_listing():
         """
 
     if request.method == "POST": #if they're adding a listing
-        req = request.form
-        agent_license_number = req["agent_license_number"]
-        satus = req["status"]
-        description = req["description"]
-        sale_yn = req["saleyn"]
-        rent_yn = req["rentyn"]
+        try:
+            req = request.form
+            #TODO needs to be converted to proper datatypes
+            #all of these are strings currently for testing. Will implement client side javascript to validate input and convert them here
+            listing_type = req.get("listing_type")
+            status = req.get("status")
+            description = req.get("description")
+            saleyn = req.get("saleyn")
+            rentyn = req.get("rentyn")
+            price = req.get("price")
+            address_number = req.get("address_number")
+            address_street = req.get("address_street")
+            address_city = req.get("address_city")
+            address_state = req.get("address_state")
+            address_zip = req.get("address_zip")
+            structure_style = req.get("structure_style")
+            bedrooms = req.get("bedrooms")
+            full_bathrooms = req.get("full_bathrooms")
+            half_bathrooms = req.get("half_bathrooms")
+            basement_yn = req.get("basementyn")
+            waterfront_yn = req.get("waterfrontyn")
+            pool_yn = req.get("poolyn")
+            garage_yn = req.get("garageyn")
+            ownership = req.get("ownership")
+            school_district = req.get("school_district")
+            sqft = req.get("sqft")
+            acreage = req.get("acreage")
+            year_built = req.get("year_built")
+            colist_agent_id = req.get("colist_agent_id")
+        except Exception:
+            print("Something went wrong here. Most likely in a conversion.")
+            return False
+
         
-
-
-
         return "Operation Successful" #Ideally this should take them to the page for the created listing
 
     return render_template("add_listing.html") #They're just viewing the form
