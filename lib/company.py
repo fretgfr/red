@@ -18,6 +18,6 @@ class Company():
     agent_ids: list
 
     @classmethod
-    def from_company_id(cls, company_id: int):
+    def from_company_id(cls, company_id: int, cnx: mysql.connector.MySQLConnection):
         """Returns a company object from the database"""
         pass

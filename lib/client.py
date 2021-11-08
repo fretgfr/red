@@ -16,6 +16,6 @@ class Client():
     listing_mls_numbers: list
 
     @classmethod
-    def from_client_id(cls, client_id: int):
+    def from_client_id(cls, client_id: int, cnx: mysql.connector.MySQLConnection):
         """ Returns a client from the database """
         pass
