@@ -39,6 +39,6 @@ class Listing:
     image_link: str
 
     @classmethod
-    def from_listing_id(cls, id: int):
+    def from_listing_id(cls, id: int, db_connection: mysql.connector.MySQLConnection):
         """Returns a listing from the database"""
         pass

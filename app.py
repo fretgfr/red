@@ -131,6 +131,10 @@ def add_listing():
             acreage = float(req.get("acreage"))
             year_built = int(req.get("year_built"))
             colist_agent_id = req.get("colist_agent_id")
+            
+            with cnx.cursor() as cursor:
+                cursor.execute("SQL COMMAND GOES HERE")
+
         except ValueError:
             print("Something went wrong here. Most likely in a conversion.")
             return False
