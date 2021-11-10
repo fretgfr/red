@@ -12,7 +12,8 @@ from lib import Agent, Client, Company, Listing, convert_yn
 with open('config.json') as config_file:
     config = json.load(config_file)
 
-cnx = con.connect(**config)
+db_connection = con.connect(**config)
+
 
 ###############################################################################
 ############################# Setup Flask #####################################
