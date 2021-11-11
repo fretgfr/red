@@ -36,11 +36,11 @@ def agent(agent_id):
         rendered html template
     """
 
-    try: 
+    try:
         agent_id = int(agent_id)
     except ValueError:
         return "Invalid agent id" #Probaby substitute with a 404 page
-    
+
     agent = Agent.from_license_number(agent_id)
     company = Company.from_company_id(agent.company_id)
 
@@ -61,7 +61,7 @@ def client(client_id: str):
         client_id = int(client_id)
     except ValueError:
         return "Invalid client id" #Probaby substitute with a 404 page
-    
+
     client = Client.from_client_id(client_id)
     return render_template("client.html", client=client)
 
@@ -76,13 +76,13 @@ def company_view(company_id: str):
 
     Returns:
         rendered html template
-    """        
+    """
 
-    try: 
+    try:
         company_id = int(company_id)
     except ValueError:
         return "Invalid company id" #Probaby substitute with a 404 page
-    
+
     company = Company.from_company_id(company_id)
 
     return render_template("company.html", company=company) #TODO doesn't exist yet
@@ -103,7 +103,7 @@ def add_listing():
     if request.method == "POST": #if they're adding a listing
         try:
             req = request.form
-            
+
             listing_date = datetime.now().date() #listing date is the date they added it
 
             listing_type = req.get("listing_type")
@@ -132,7 +132,7 @@ def add_listing():
             acreage = float(req.get("acreage"))
             year_built = int(req.get("year_built"))
             colist_agent_id = req.get("colist_agent_id")
-            
+
             with cnx.cursor() as cursor:
                 cursor.execute("SQL COMMAND GOES HERE")
 
@@ -140,20 +140,20 @@ def add_listing():
             print("Something went wrong here. Most likely in a conversion.")
             return False
 
-        
+
         return "Operation Successful" #Ideally this should take them to the page for the created listing
 
     return render_template("add_listing.html") #They're just viewing the form
 
 @app.route("/listing/<listing_id>/edit", methods=["GET", "POST"])
 def edit_listing(listing_id: str):
-    
+
     if request.method == "POST":
         #Code to update the listing goes here
         return "Operation Successful"
-    
+
     listing = Listing.from_listing_id(listing_id)
-    
+
     return render_template("edit_listing.html", listing=listing)
 
 @app.route("/listing/<listing_id>")
@@ -166,11 +166,11 @@ def listing_view(listing_id: str):
     Returns:
         rendered html template
     """
-    try: 
+    try:
         listing_id = int(listing_id)
     except ValueError:
         return "Invalid listing id" #Probaby substitute with a 404 page
-    
+
 
     listing = Listing.from_listing_id(listing_id)
     agent = Agent.from_license_number(listing.agent_license_number)
@@ -197,3 +197,5 @@ if __name__ == "__main__":
         print(e)
     finally:
         db_connection.close()
+
+#TEST
