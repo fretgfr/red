@@ -198,4 +198,3 @@ if __name__ == "__main__":
     finally:
         db_connection.close()
 
-#TEST
