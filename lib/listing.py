@@ -40,10 +40,16 @@ class Listing:
 
     @classmethod
     def from_listing_id(cls, id: int, db_connection: mysql.connector.MySQLConnection):
-        """Returns a listing from the database"""
-        pass
+        with db_connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM listings WHERE mls_number = %s", (id,))
+            listing_data = cursor.fetchone() # Haven't tested yet.
+            return cls(**listing_data)
 
     @classmethod
     def create_listing(cls, db_connection: mysql.connector.MySQLConnection, listing_type: str, status: str, description: str, sale_yn: bool, rent_yn: bool, price: int, address_number: int, address_street: str, address_city: str, address_state: str, address_zip: int, structure_style: str, bedroom_count: int, full_bathroom_count: int, half_bathroom_count: int, basement_yn: bool, waterfront_yn: bool, fireplace_yn: bool, garage_yn: bool, pool_yn: bool, ownership: str, school_district: str, garage_car_count: int, above_grade_sqft: int, acreage: int, year_built: int, date_listed: date, agent_license_number: int, colisting_agent_license_number: int, image_link: str):
         """Creates a listing in the database"""
+        pass
+
+    def update_in_database(self, db_connection: mysql.connector.MySQLConnection):
+        """Updates the listing in the database"""
         pass

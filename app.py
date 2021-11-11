@@ -187,11 +187,13 @@ def listing_search():
 
     return render_template("listing_search.html")
 
-
-
 ###############################################################################
 ################################### Run #######################################
 ###############################################################################
 if __name__ == "__main__":
-    
-    app.run()
+    try:
+        app.run()
+    except Exception as e:
+        print(e)
+    finally:
+        db_connection.close()
