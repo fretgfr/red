@@ -54,16 +54,14 @@ class Listing:
             "values", (listing_type, status, description, sale_yn, rent_yn, price, address_number, address_street, address_city, address_state, address_zip, structure_style, bedroom_count, full_bathroom_count, half_bathroom_count, basement_yn, waterfront_yn, fireplace_yn, garage_yn, pool_yn, ownership, school_district, garage_car_count, above_grade_sqft, acreage, year_built, date_listed, agent_license_number, colisting_agent_license_number, image_link))
            
 
-        pass
-
-    def update_in_database(self, db_connection: mysql.connector.MySQLConnection):
-        #Updates the listing in the database
+    def update_status_in_database(self, db_connection: mysql.connector.MySQLConnection, mls_number: int):
+        #Updates the listing in the database, should update all of the fields except original price and listing date.
         with db_connection.cursor() as cursor:
-            cursor.execute("UDPATE LISTING set listing_status = %s where listing_mls_number = %s", (status, mls_number))
+            cursor.execute("UDPATE LISTING set listing_status = %s where listing_mls_number = %s", (mls_number,))
            
         pass
 
-    def delete_listing(cls, db_connection: mysql.connector.MySQLConnection):
+    def delete_listing(cls, db_connection: mysql.connector.MySQLConnection, mls_number: int):
         #Deletes the listing
         with db_connection.cursor() as cursor:
             cursor.execute("DELETE FROM LISTING WHERE listing_mls_number = %s", (mls_number))
