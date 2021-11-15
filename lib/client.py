@@ -26,7 +26,7 @@ class Client():
 
 
 @classmethod
-    def create_client(cls, client_id: int, db_connection: mysql.connector.MySQLConnection, client_id: int, first_name: str, middle_initial: str, last_name: str, phone_area_code: int, phone_number: int, email_address: str, agent_license_number: int, listing_mls_numbers: list):
+    def create_client(cls, db_connection: mysql.connector.MySQLConnection, client_id: int, first_name: str, middle_initial: str, last_name: str, phone_area_code: int, phone_number: int, email_address: str, agent_license_number: int, listing_mls_numbers: list):
         #Creates a client in database
          with db_connection.cursor() as cursor:
             cursor.execute("INSERT INTO CLIENT "
