@@ -134,8 +134,13 @@ def add_listing():
             colist_agent_id = req.get("colist_agent_id")
 
             with db_connection.cursor() as cursor:
-                cursor.execute("SQL COMMAND GOES HERE")
-
+                cursor.execute(
+                    """SQL GOES HERE
+                    AND HERE
+                    """
+                )
+                db_connection.commit()
+                
         except ValueError:
             print("Something went wrong here. Most likely in a conversion.")
             return False
