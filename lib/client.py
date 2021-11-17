@@ -22,10 +22,10 @@ class Client():
             cursor.execute("SELECT * FROM CLIENT WHERE client_id = %s", (client_id))
             client_data = cursor.fetchone()
             return cls(**client_data)
-        pass
 
 
-@classmethod
+
+    @classmethod
     def create_client(cls, db_connection: mysql.connector.MySQLConnection, client_id: int, first_name: str, middle_initial: str, last_name: str, phone_area_code: int, phone_number: int, email_address: str, agent_license_number: int, listing_mls_numbers: list):
         #Creates a client in database
          with db_connection.cursor() as cursor:
@@ -33,13 +33,11 @@ class Client():
             "(`client_id`, `client_first_name`, `client_middle_initial`, `client_last_name`,`client_area_code`, `client_phone_number`, `client_email_address`, `client_agent_license_number`) "
             "values (%s, %s, %s, %s, %s, %s, %s, %s, %s,)", (client_id, first_name, middle_initial, last_name, phone_area_code, phone_number, email_address, agent_license_number, listing_mls_numbers))
             
-        pass
 
- @classmethod
+    @classmethod
     def delete_client(cls, client_id: int, db_connection: mysql.connector.MySQLConnection):
         #Delete a client from the database
          with db_connection.cursor() as cursor:
             cursor.execute("DELETE FROM CLIENT WHERE client_id = %s", (client_id))
             client_data = cursor.fetchone()
             return cls(**client_data)
-        pass
