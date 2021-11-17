@@ -11,14 +11,14 @@
     </head>
   <body>
     <p> Name: {{agent.first_name}} {{agent.middle_initial}}. {{agent.last_name}}</p>
-    <p> License Number: {{license_number}} </p>
-    <p>Office Phone Number: {{office_area_code}}-{{office_phone_number}}</p>
-    <p>Cell Phone Number: {{cell_area_code}}-{{cell_phone_number}}</p>
-    <p>Email: {{email_address}}</p>
-    <p>Office Location: {{office_street_address}} {{office_city}}, {{office_state}} {{office_zip_code}}</p>
-    <p>Company ID: {{company_id}}</p>
-    <p>Client IDs: {{client_ids}}</p>
-    <p>Listing IDs: {{listing_ids}}</p>
+    <p>License Number: {{agent.license_number}} </p>
+    <p>Office Phone Number: {{agent.office_area_code}}-{{agent.office_phone_number}}</p>
+    <p>Cell Phone Number: {{agent.cell_area_code}}-{{agent.cell_phone_number}}</p>
+    <p>Email: {{agent.email_address}}</p>
+    <p>Office Location: {{agent.office_street_address}} {{agent.office_city}}, {{agent.office_state}} {{agent.office_zip_code}}</p>
+    <p>Company ID: {{agent.company_id}}</p>
+    <p>Client IDs: {{agent.client_ids}}</p>
+    <p>Listing IDs: {{agent.listing_ids}}</p>
   </body>
 </div>
 {% endblock %}
