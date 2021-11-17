@@ -56,13 +56,9 @@ class Listing:
         with db_connection.cursor() as cursor:
             cursor.execute("UDPATE LISTING set listing_status = %s where listing_mls_number = %s", (mls_number,))
            
-        pass
 
     def delete_listing(cls, db_connection: mysql.connector.MySQLConnection, mls_number: int):
         #Deletes the listing
         with db_connection.cursor() as cursor:
             cursor.execute("DELETE FROM LISTING WHERE listing_mls_number = %s", (mls_number))
-           
-        pass
-
-    
+               
