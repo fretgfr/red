@@ -3,6 +3,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- Content of the page should go here -->
 
+
+<div class ="agent">
+    <head>
+        <h1> Agent Profile:</h1>
+    </head>
+  <body>
+    <p> Name: {{first_name}} {{middle_initial}}. {{last_name}}</p>
+    <p> License Number: {{license_number}} </p>
+    <p>Office Phone Number: {{office_area_code}}-{{office_phone_number}}</p>
+    <p>Cell Phone Number: {{cell_area_code}}-{{cell_phone_number}}</p>
+    <p>Email: {{email_address}}</p>
+    <p>Office Location: {{office_street_address}} {{office_city}}, {{office_state}} {{office_zip_code}}</p>
+    <p>Company ID: {{company_id}}</p>
+    <p>Client IDs: {{client_ids}}</p>
+    <p>Listing IDs: {{listing_ids}}</p>
+  </body>
+</div>
 {% endblock %}
