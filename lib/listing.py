@@ -36,7 +36,7 @@ class Listing:
     date_listed: date
     agent_license_number: int
     colisting_agent_license_number: int
-    image_link: str
+    image_links: str
 
     @classmethod
     def from_listing_id(cls, id: int, db_connection: mysql.connector.MySQLConnection):
