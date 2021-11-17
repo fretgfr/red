@@ -7,12 +7,12 @@
         <h1> Client Profile:</h1>
     </head>
   <body>
-    <p>ID Number: {{client_id}} </p>
-    <p>Name: {{first_name}} {{middle_initial}}. {{last_name}}</p>
-    <p>Phone Number: {{phone_area_code}}-{{phone_number}}</p>
-    <p>Email: {{email_address}}</p>
-    <p>Agent ID: {{agent_license_number}}</p>
-    <p>Listing ID: {{listing_mls_numbers}}</p>
+    <p>ID Number: {{client.client_id}} </p>
+    <p>Name: {{client.first_name}} {{client.middle_initial}}. {{client.last_name}}</p>
+    <p>Phone Number: {{client.phone_area_code}}-{{client.phone_number}}</p>
+    <p>Email: {{client.email_address}}</p>
+    <p>Agent ID: {{client.agent_license_number}}</p>
+    <p>Listing ID: {{client.listing_mls_numbers}}</p>
   </body>
 </div>
 
