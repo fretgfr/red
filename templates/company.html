@@ -2,6 +2,19 @@
 
 {% block content %}
 
+<div class ="company">
+    <head>
+        <h1> Company Profile:</h1>
+    </head>
+  <body>
+    <p>ID Number: {{company.company_id}} </p>
+    <p>Office Location: {{company.hq_street}} {{company.hq_city}}, {{company.hq_state}} {{company.hq_zip}}</p>
+    <p>Phone Number: {{company.hq_phone_area}}-{{company.hq_phone_number}}</p>
+    <p>Fax Number: {{company.hq_fax_area}}-{{company.hq_fax_number}}</p>
+    <p>Agent IDs: {{company.agent_ids}}</p>
+  </body>
+</div>
+
 
 
 {% endblock %}
