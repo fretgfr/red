@@ -55,6 +55,7 @@ class Listing:
         #Updates the listing in the database, should update all of the fields except original price and listing date.
         with db_connection.cursor() as cursor:
             cursor.execute("UDPATE LISTING set listing_status = %s where listing_mls_number = %s", (mls_number,))
+
            
 
     def delete_listing(cls, db_connection: mysql.connector.MySQLConnection, mls_number: int):

@@ -134,11 +134,7 @@ def add_listing():
             colist_agent_id = req.get("colist_agent_id")
 
             with db_connection.cursor() as cursor:
-                cursor.execute(
-                    """SQL GOES HERE
-                    AND HERE
-                    """
-                )
+                # Listing.create_listing() #needs to be filled in and added to listing.py
                 db_connection.commit()
                 
         except ValueError:
