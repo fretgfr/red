@@ -5,11 +5,46 @@
 
 <!-- Content of the page should go here -->
 
-    <p> {{ description }} </p>
-
     
-    {% for image_url in images %}
-    <img src="{{ image_url }}">
-    {% endfor %}
+    <div class ="listing">
+        <head>
+            {% for image_url in images %}
+            <img src="{{ image_url }}">
+            {% endfor %}
+            
+            <h1> {{ address_number }} {{ address_street }} 
+            <br>{{ address_city }}, {{ address_state }} {{ address_zip }} </h1>
+        </head>
+      <body>
+        <p> {{ description }} </p>
+        <p> MLS Number: {{ listing.mls_number }} </p>
+        <p> Listing type: {{ listing.listing_type }} </p>
+        <p> Status: {{ listing.status }} </p>
+        <p> Sale: {{ listing.sale_yn }} </p>
+        <p> Rent: {{ listing.rent_yn }} </p>
+        <p> Price: {{ listing.price }} </p>
+        <p> Original Price: {{ listing.original_price }} </p>
+        <p> Structure Style: {{ listing.structure_style }} </p>
+        <p> Bedroom count: {{ listing.bedroom_count }} </p>
+        <p> Full Bathroom Count: {{ listing.full_bathroom_count }} </p>
+        <p> Half Bathroom Count: {{ listing.half_bathroom_count }}</p>
+        <p> Basement?: {{ listing.basement_yn }} </p>
+        <p> Waterfront?: {{ listing.waterfront_yn }} </p>
+        <p> Fireplace?: {{ listing.fireplace_yn }} </p>
+        <p> Garage?: {{ listing.garage_yn }} </p>
+        <p> Pool?: {{ listing.pool_yn }} </p>
+        <p> Ownership: {{ listing.ownership }} </p>
+        <p> School District Info: {{ listing.school_district }}</p>
+        <p> Garage Car Count: {{ listing.garage_car_count }}</p>
+        <p> Above Grade SqFt: {{ listing.above_grade_sqft }}</p>
+        <p> Acreage: {{ listing.acreage }}</p>
+        <p> Year Built: {{ listing.year_built }}</p>
+        <p> Date listed: {{ listing.date_listed }} </p>
+        <p> Agent License #: {{ listing.agent_license_number }}</p>
+        <p> Colisting Agent License #: {{ listing.colisting_agent_license_number }}</p>
+      </body>
+    </div>
+    
+   
 
 {% endblock content %}
