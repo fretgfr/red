@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `dbproject`.`LISTING` (
   `listing_school_district` VARCHAR(45) NOT NULL,
   `listing_garage_car_count` SMALLINT NOT NULL,
   `listing_above_grade_sqft` MEDIUMINT NOT NULL,
-  `listing_acreage` DECIMAL NOT NULL,
+  `listing_acreage` DECIMAL(10,2) NOT NULL,
   `listing_year_built` MEDIUMINT NOT NULL,
   `listing_date` DATE NOT NULL,
   `listing_agent_license_number` INT NOT NULL,

@@ -11,7 +11,7 @@ db_connection = con.connect(**config)
 with db_connection.cursor(dictionary=True) as cursor:
     cursor.execute("""
         SELECT * FROM LISTING WHERE listing_mls_number = %s;
-        """, (3,))
+        """, (1,))
     for item in cursor:
         print(item)
         acreage = float(item['listing_acreage'])
