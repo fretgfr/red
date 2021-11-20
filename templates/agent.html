@@ -4,12 +4,24 @@
 
 {% block content %}
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+<style>
+  .agentpage{
+    margin: 10px;
+    padding: 10px;
+  }
+</style>  
 
-<div class ="agent">
-    <head>
-        <h1> Agent Profile:</h1>
-    </head>
-  <body>
+<div class ="agentpage">
+  <div class="columns">
+  <div class="column is-two-thirds">
+     <head>
+         <h1 class="title"> Agent Profile:</h1>
+     </head>
+  </div>
+  </div>
+  <div class="column is-two-thirds">
+   <body>
     <p> Name: {{agent.first_name}} {{agent.middle_initial}}. {{agent.last_name}}</p>
     <p>License Number: {{agent.license_number}} </p>
     <p>Office Phone Number: {{agent.office_area_code}}-{{agent.office_phone_number}}</p>
@@ -20,5 +32,6 @@
     <p>Client IDs: {{agent.client_ids}}</p>
     <p>Listing IDs: {{agent.listing_ids}}</p>
   </body>
+  </div>
 </div>
 {% endblock %}
