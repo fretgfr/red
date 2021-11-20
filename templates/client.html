@@ -2,10 +2,23 @@
 
 {% block content %}
 
-<div class ="client">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+<style>
+  .clienttpage{
+    margin: 10px;
+    padding: 10px;
+  }
+</style>  
+
+<div class ="clientpage">
+  <div class ="columns">
+    <div class="column is-two-thirds">
     <head>
-        <h1> Client Profile:</h1>
+        <h1 class="title"> Client Profile:</h1>
     </head>
+    </div>
+  </div>
+  <div class="column is-two-thirds">
   <body>
     <p>ID Number: {{client.client_id}} </p>
     <p>Name: {{client.first_name}} {{client.middle_initial}}. {{client.last_name}}</p>
@@ -14,6 +27,7 @@
     <p>Agent ID: {{client.agent_license_number}}</p>
     <p>Listing ID: {{client.listing_mls_numbers}}</p>
   </body>
+  </div> 
 </div>
 
     
