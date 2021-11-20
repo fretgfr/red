@@ -1,18 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<style>
+  .listingsearch{
+    margin: 10px;
+    padding: 10px;
+  }
+</style> 
 
 <div class="listingsearch">
+  <div class="columns">
+    <div class="column is-two-thirds">
     <head>
       <h1>Search for House Listing</h1>
     </head>
+    </div>
+  </div>
+  <div class="column is-two-thirds">
     <form id="form">
     <input type="search" id="listing_address_zip" name="listing_address_zip"
     placeholder="Search zip code...">
     <button>Search</button>
     </form>
-    </div>
+  </div>
+</div>
 
     
 
