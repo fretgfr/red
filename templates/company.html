@@ -3,27 +3,29 @@
 {% block content %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
 <style>
-  .companypage{
+  .companypage {
     margin: 10px;
     padding: 10px;
   }
-</style>  
+</style>
 
-<div class ="companypage">
+<div class="companypage">
   <div class="columns">
     <div class="column is-two-thirds">
-    <head>
+
+      <head>
         <h1 class="title"> Company Profile:</h1>
-    </head>
+      </head>
     </div>
   </div>
-  <div class="column is-two-thirds"> 
+  <div class="column is-two-thirds">
+
     <body>
       <p>ID Number: {{company.company_id}} </p>
       <p>Office Location: {{company.hq_street}} {{company.hq_city}}, {{company.hq_state}} {{company.hq_zip}}</p>
       <p>Phone Number: {{company.hq_phone_area}}-{{company.hq_phone_number}}</p>
-     <p>Fax Number: {{company.hq_fax_area}}-{{company.hq_fax_number}}</p>
-     <p>Agent IDs: {{company.agent_ids}}</p>
+      <p>Fax Number: {{company.hq_fax_area}}-{{company.hq_fax_number}}</p>
+      <p>Agent IDs: {{company.agent_ids}}</p>
     </body>
   </div>
 </div>
