@@ -287,6 +287,22 @@
             </div>
         </div>
 
+        <div>
+            <div class="columns">
+                <div class="column is-2">
+                    <div class="field is-horizontal">
+                        <label for="fireplaceyn">Fireplace?</label>
+                    </div>
+                </div>
+                <div class="column">
+                    <select name="fireplaceyn" id="fireplaceyn" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
 
         <div>
             <div class="columns">
@@ -408,9 +424,20 @@
             </div>
         </div>
 
-        <!-- Date listed not necessary as it'll be the date this form is processed -->
+        <div>
+            <div class="columns">
+                <div class="column is-2">
+                    <div class="field is-horizontal">
+                        <label for="listing_agent_id">Listing Agent License Number</label>
+                    </div>
+                </div>
+                <div class="column">
+                    <input type="text" name="listing_agent_id" id="listing_agent_id">
+                </div>
+            </div>
+        </div>
 
-        <!-- Agent License Number will come from the logged in agent -->
+        <!-- Date listed not necessary as it'll be the date this form is processed -->
 
         <div>
             <div class="columns">
@@ -425,8 +452,18 @@
             </div>
         </div>
 
-        <!-- For uploading the image: -->
-        <!-- https://stackoverflow.com/questions/44926465/upload-image-in-flask -->
+        <div>
+            <div class="columns">
+                <div class="column is-2">
+                    <div class="field is-horizontal">
+                        <label for="image_link">Photo Link</label>
+                    </div>
+                </div>
+                <div class="column">
+                    <input type="text" name="image_link" id="image_link">
+                </div>
+            </div>
+        </div>
 
         <div class="columns">
             <div class="column is-offset-1">

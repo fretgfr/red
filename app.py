@@ -123,6 +123,7 @@ def add_listing():
             half_bathrooms = int(req.get("half_bathrooms"))
             basement_yn = convert_yn(req.get("basementyn"))
             waterfront_yn = convert_yn(req.get("waterfrontyn"))
+            fireplace_yn = convert_yn(req.get("fireplaceyn"))
             pool_yn = convert_yn(req.get("poolyn"))
             garage_yn = convert_yn(req.get("garageyn"))
             ownership = req.get("ownership")
@@ -131,11 +132,13 @@ def add_listing():
             sqft = int(req.get("sqft"))
             acreage = float(req.get("acreage"))
             year_built = int(req.get("year_built"))
-            colist_agent_id = req.get("colist_agent_id")
+            listing_agent_id = int(req.get("listing_agent_id")) #TODO
+            colist_agent_id = int(req.get("colist_agent_id")) if req.get("colist_agent_id") else None
+            image_link = req.get("image_link") #TODO 
 
-            with db_connection.cursor() as cursor:
-                # Listing.create_listing() #needs to be filled in and added to listing.py
-                db_connection.commit()
+            listing = Listing.create_listing(db_connection, listing_type, status, description, saleyn, rentyn, price, address_number, address_street, address_city, address_state, address_zip, structure_style, bedrooms, full_bathrooms, half_bathrooms, basement_yn, waterfront_yn, fireplace_yn, garage_yn, pool_yn, ownership, school_district, car_count, sqft, acreage, year_built, listing_date, listing_agent_id, colist_agent_id, image_link)
+
+            print(listing)
                 
         except ValueError:
             print("Something went wrong here. Most likely in a conversion.")
