@@ -156,7 +156,7 @@ def edit_listing(listing_id: str):
         #Code to update the listing goes here
         return "Operation Successful"
 
-    listing = Listing.from_listing_id(listing_id)
+    listing = Listing.from_listing_id(listing_id, db_connection)
 
     return render_template("edit_listing.html", listing=listing)
 
@@ -176,8 +176,8 @@ def listing_view(listing_id: str):
         return "Invalid listing id" #Probaby substitute with a 404 page
 
 
-    listing = Listing.from_listing_id(listing_id)
-    agent = Agent.from_license_number(listing.agent_license_number)
+    listing = Listing.from_listing_id(listing_id,db_connection)
+    agent = Agent.from_license_number(listing.listing_agent_license_number, db_connection)
 
     return render_template("listing.html", listing=listing, agent=agent)
 
