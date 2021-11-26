@@ -18,8 +18,8 @@ class Agent():
     agent_office_state: str
     agent_office_zip: int
     agent_company_id: int
-    agent_client_ids: list
-    agent_listing_ids: list
+    CLIENT_id: int
+    LISTING_mls_number: int
 
     @classmethod
     def from_license_number(cls, license_number: int, db_connection: mysql.connector.MySQLConnection):
