@@ -133,7 +133,7 @@ def add_listing():
             acreage = float(req.get("acreage"))
             year_built = int(req.get("year_built"))
             listing_agent_id = int(req.get("listing_agent_id")) #TODO
-            colist_agent_id = int(req.get("colist_agent_id")) if req.get("colist_agent_id") else None
+            colist_agent_id = int(req.get("colist_agent_id")) if req.get("colist_agent_id") != "-1" else None
             image_link = req.get("image_link") #TODO 
 
             listing = Listing.create_listing(db_connection, listing_type, status, description, saleyn, rentyn, price, address_number, address_street, address_city, address_state, address_zip, structure_style, bedrooms, full_bathrooms, half_bathrooms, basement_yn, waterfront_yn, fireplace_yn, garage_yn, pool_yn, ownership, school_district, car_count, sqft, acreage, year_built, listing_date, listing_agent_id, colist_agent_id, image_link)
