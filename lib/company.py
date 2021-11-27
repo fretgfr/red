@@ -21,7 +21,7 @@ class Company():
     def from_company_id(cls, company_id: int, db_connection: mysql.connector.MySQLConnection):
         #Returns a company object from the database
         with db_connection.cursor(dictionary=True) as cursor:
-            cursor.execute("SELECT * FROM COMPANY WHERE company_id = %s", (company_id))
+            cursor.execute("SELECT * FROM COMPANY WHERE company_id = %s", (company_id,))
             company_data = cursor.fetchone()
             return cls(**company_data)
         

@@ -84,7 +84,7 @@ def company_view(company_id: str):
     except ValueError:
         return "Invalid company id" #Probaby substitute with a 404 page
 
-    company = Company.from_company_id(company_id)
+    company = Company.from_company_id(company_id, db_connection)
 
     return render_template("company.html", company=company) #TODO doesn't exist yet
 
