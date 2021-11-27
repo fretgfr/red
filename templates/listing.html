@@ -20,9 +20,6 @@
   }
 </style>
 
-
-
-
 <div class="listingaroundpage">
   <div class="listing">
     <div class="center">
@@ -55,8 +52,6 @@
       </div>
     </div>
   </div>
-
-
 
   <div class="listing">
 
@@ -91,7 +86,7 @@
             <p> Acreage: {{ listing.listing_acreage }}</p>
             <p> Year Built: {{ listing.listing_year_built }}</p>
             <p> Date listed: {{ listing.listing_date }} </p>
-            <p> Days on Market: {{ listing.days_on_market }} </p>
+            <!-- <p> Days on Market: {{ listing.str_days_on_market }} </p> -->
           </div>
         </div>
       </div>
@@ -107,8 +102,5 @@
     </div>
   </div>
 </div>
-
-
-
 
 {% endblock content %}
