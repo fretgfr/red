@@ -47,7 +47,7 @@
                 <p> Status: {{ listing.listing_status }} </p>
                 <p> Sale: {{ listing.sale }} </p>
                 <p> Rent: {{ listing.rent }} </p>
-                <p> Price: {{ listing.listing_price }} </p>
+                <p> Price: {{ listing.pretty_price }} </p>
               </h2>
             </div>
         </div>
@@ -69,7 +69,7 @@
           <div class="block">
             <p> MLS Number: {{ listing.listing_mls_number }} </p>
             <p> Listing type: {{ listing.listing_type }} </p>
-            <p> Original Price: {{ listing.listing_original_price }} </p>
+            <p> Original Price: {{ listing.pretty_original_price }} </p>
             <p> Structure Style: {{ listing.listing_structure_style }} </p>
             <p> Bedroom count: {{ listing.listing_bedroom_count }} </p>
             <p> Full Bathroom Count: {{ listing.listing_full_bath_count }} </p>
@@ -87,7 +87,7 @@
             <p> Ownership: {{ listing.listing_ownership }} </p>
             <p> School District: {{ listing.listing_school_district }}</p>
             <p> Garage Car Count: {{ listing.listing_garage_car_count }}</p>
-            <p> Above Grade SqFt: {{ listing.listing_above_grade_sqft }}</p>
+            <p> Above Grade SqFt: {{ listing.pretty_sqft }}</p>
             <p> Acreage: {{ listing.listing_acreage }}</p>
             <p> Year Built: {{ listing.listing_year_built }}</p>
             <p> Date listed: {{ listing.listing_date }} </p>

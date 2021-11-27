@@ -100,3 +100,15 @@ class Listing:
     @property
     def has_colisting_agent(self) -> bool:
         return self.listing_colisting_agent_license_number != 0
+
+    @property
+    def pretty_price(self) -> str:
+        return f"${self.listing_price:,}"
+    
+    @property
+    def pretty_original_price(self) -> str:
+        return f"${self.listing_original_price:,}"
+    
+    @property
+    def pretty_sqft(self) -> str:
+        return f"{self.listing_above_grade_sqft:,}"
