@@ -22,11 +22,11 @@
   <div class="column is-two-thirds">
 
     <body>
-      <p>ID Number: {{ client.client_id }} </p>
-      <p>Name: {{ client.first_name }} {{ client.middle_initial }}. {{ client.last_name }}</p>
-      <p>Phone Number: {{ client.phone_area_code }}-{{ client.phone_number }}</p>
-      <p>Email: {{ client.email_address }}</p>
-      <p>Agent ID: {{ client.agent_license_number }}</p>
+      <p>ID Number: {{ client.cid }} </p>
+      <p>Name: {{ client.client_first_name }} {{ client.client_middle_initial }}. {{ client.client_last_name }}</p>
+      <p>Phone Number: {{ client.client_phone_area_code }}-{{ client.client_phone_number }}</p>
+      <p>Email: {{ client.client_email_address }}</p>
+      <p>Agent ID: {{ client.client_agent_license_number }}</p>
       <p>Listing ID: {{ client.listing_mls_numbers }}</p>
     </body>
   </div>
