@@ -17,3 +17,9 @@ def convert_tf(boolean: bool) -> int:
         return 1
     else:
         return 0
+
+def convert_01_yn(number: int) -> str:
+    if number == 1:
+        return 'Yes'
+    else:
+        return 'No'

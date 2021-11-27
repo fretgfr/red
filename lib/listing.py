@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from datetime import date
 import mysql.connector
+from helpers import convert_01_yn
 
 @dataclass
 class Listing:
@@ -62,9 +63,40 @@ class Listing:
 
            
 
-    def delete_listing(cls, db_connection: mysql.connector.MySQLConnection, mls_number: int):
+    def delete_listing(self, db_connection: mysql.connector.MySQLConnection, mls_number: int):
         #Deletes the listing
         with db_connection.cursor() as cursor:
-            cursor.execute("DELETE FROM LISTING WHERE listing_mls_number = %s", (mls_number,))
+            cursor.execute("DELETE FROM LISTING WHERE listing_mls_number = %s", (self.listing_mls_number,))
             db_connection.commit()
-               
+
+    @property
+    def sale(self) -> str:
+        return convert_01_yn(self.listing_sale_yn)
+
+    @property
+    def rent(self) -> str:
+        return convert_01_yn(self.listing_rent_yn)
+    
+    @property
+    def basement(self) -> str:
+        return convert_01_yn(self.listing_basement_yn)
+    
+    @property
+    def waterfront(self) -> str:
+        return convert_01_yn(self.listing_waterfront_yn)
+    
+    @property
+    def fireplace(self) -> str:
+        return convert_01_yn(self.listing_fireplace_yn)
+    
+    @property
+    def pool(self) -> str:
+        return convert_01_yn(self.listing_pool_yn)
+    
+    @property
+    def garage(self) -> str:
+        return convert_01_yn(self.listing_garage_yn)
+
+    @property
+    def has_colisting_agent(self) -> bool:
+        return self.listing_colisting_agent_license_number != 0
