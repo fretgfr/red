@@ -35,14 +35,15 @@ def agent(agent_id):
     Returns:
         rendered html template
     """
+    
 
     try:
         agent_id = int(agent_id)
     except ValueError:
         return "Invalid agent id" #Probaby substitute with a 404 page
 
-    agent = Agent.from_license_number(agent_id)
-    company = Company.from_company_id(agent.company_id)
+    agent = Agent.from_license_number(agent_id,db_connection)
+    company = Company.from_company_id(agent.agent_company_id, db_connection)
 
     return render_template("agent.html", agent=agent, company=company)
 
