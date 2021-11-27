@@ -40,6 +40,15 @@ class Listing:
     listing_image_links: str
 
     @classmethod
+    def get_all_listings(cls, db_connection: mysql.connector.MySQLConnection):
+        with db_connection.cursor(dictionary=True) as cursor:
+            listings = []
+            cursor.execute("SELECT listing_mls_number FROM LISTING;")
+            for listing in cursor:
+                listings.append(Listing.from_listing_id(listing['listing_mls_number'], db_connection))
+            return listings
+
+    @classmethod
     def from_listing_id(cls, id: int, db_connection: mysql.connector.MySQLConnection):
         with db_connection.cursor(dictionary=True) as cursor:
             cursor.execute("SELECT * FROM LISTING WHERE listing_mls_number = %s", (id,))
