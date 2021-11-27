@@ -112,3 +112,8 @@ class Listing:
     @property
     def pretty_sqft(self) -> str:
         return f"{self.listing_above_grade_sqft:,}"
+
+    @property
+    def days_on_market(self) -> int:
+        today = date.today()
+        return (today - self.listing_date_listed).days
