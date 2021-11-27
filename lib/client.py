@@ -19,7 +19,7 @@ class Client():
     def from_client_id(cls, client_id: int, db_connection: mysql.connector.MySQLConnection):
         #Returns a client from the database
          with db_connection.cursor(dictionary=True) as cursor:
-            cursor.execute("SELECT * FROM CLIENT WHERE client_id = %s", (client_id))
+            cursor.execute("SELECT * FROM CLIENT WHERE client_id = %s", (client_id, ))
             client_data = cursor.fetchone()
             return cls(**client_data)
 
