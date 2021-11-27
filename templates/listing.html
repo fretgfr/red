@@ -20,9 +20,6 @@
   }
 </style>
 
-
-
-
 <div class="listingaroundpage">
   <div class="listing">
     <div class="center">
@@ -32,21 +29,22 @@
           <head>
             <div class="column is-two-fifths">
               <figure class="image is-256x256">
-                <img
-                  src="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2019/2/7/3/BP_HHMTN310_Bolden_home-exterior_AFTER_0132.jpg.rend.hgtvcom.966.644.suffix/1549585070420.jpeg">
+                <img src={{ listing.listing_image_links }}>
+                <!-- <img
+                  src="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2019/2/7/3/BP_HHMTN310_Bolden_home-exterior_AFTER_0132.jpg.rend.hgtvcom.966.644.suffix/1549585070420.jpeg"> -->
               </figure>
             </div>
             <div class="column">
-              <h1 class="title">{{ address_number }} {{ address_street }}
-                <br>{{ address_city }}, {{ address_state }}
-                <br>{{ address_zip }}
+              <h1 class="title">{{ listing.listing_address_number }} {{ listing.listing_address_street }}
+                <br>{{ listing.listing_address_city }}, {{ listing.listing_address_state }}
+                <br>{{ listing.listing_address_zip }}
               </h1>
               <br>
               <h2 class="subtitle">
-                <p> Status: {{ listing.status }} </p>
-                <p> Sale: {{ listing.sale_yn }} </p>
-                <p> Rent: {{ listing.rent_yn }} </p>
-                <p> Price: {{ listing.price }} </p>
+                <p> Status: {{ listing.listing_status }} </p>
+                <p> Sale: {{ listing.sale }} </p>
+                <p> Rent: {{ listing.rent }} </p>
+                <p> Price: {{ listing.pretty_price }} </p>
               </h2>
             </div>
         </div>
@@ -54,8 +52,6 @@
       </div>
     </div>
   </div>
-
-
 
   <div class="listing">
 
@@ -66,30 +62,31 @@
             <p> {{ description }} </p>
           </div>
           <div class="block">
-            <p> MLS Number: {{ listing.mls_number }} </p>
+            <p> MLS Number: {{ listing.listing_mls_number }} </p>
             <p> Listing type: {{ listing.listing_type }} </p>
-            <p> Original Price: {{ listing.original_price }} </p>
-            <p> Structure Style: {{ listing.structure_style }} </p>
-            <p> Bedroom count: {{ listing.bedroom_count }} </p>
-            <p> Full Bathroom Count: {{ listing.full_bathroom_count }} </p>
-            <p> Half Bathroom Count: {{ listing.half_bathroom_count }}</p>
+            <p> Original Price: {{ listing.pretty_original_price }} </p>
+            <p> Structure Style: {{ listing.listing_structure_style }} </p>
+            <p> Bedroom count: {{ listing.listing_bedroom_count }} </p>
+            <p> Full Bathroom Count: {{ listing.listing_full_bath_count }} </p>
+            <p> Half Bathroom Count: {{ listing.listing_half_bath_count }}</p>
           </div>
         </div>
 
         <div class="column">
           <div class="block">
-            <p> Basement?: {{ listing.basement_yn }} </p>
-            <p> Waterfront?: {{ listing.waterfront_yn }} </p>
-            <p> Fireplace?: {{ listing.fireplace_yn }} </p>
-            <p> Garage?: {{ listing.garage_yn }} </p>
-            <p> Pool?: {{ listing.pool_yn }} </p>
-            <p> Ownership: {{ listing.ownership }} </p>
-            <p> School District Info: {{ listing.school_district }}</p>
-            <p> Garage Car Count: {{ listing.garage_car_count }}</p>
-            <p> Above Grade SqFt: {{ listing.above_grade_sqft }}</p>
-            <p> Acreage: {{ listing.acreage }}</p>
-            <p> Year Built: {{ listing.year_built }}</p>
-            <p> Date listed: {{ listing.date_listed }} </p>
+            <p> Basement?: {{ listing.basement }} </p>
+            <p> Waterfront?: {{ listing.waterfront }} </p>
+            <p> Fireplace?: {{ listing.fireplace }} </p>
+            <p> Garage?: {{ listing.garage }} </p>
+            <p> Pool?: {{ listing.pool }} </p>
+            <p> Ownership: {{ listing.listing_ownership }} </p>
+            <p> School District: {{ listing.listing_school_district }}</p>
+            <p> Garage Car Count: {{ listing.listing_garage_car_count }}</p>
+            <p> Above Grade SqFt: {{ listing.pretty_sqft }}</p>
+            <p> Acreage: {{ listing.listing_acreage }}</p>
+            <p> Year Built: {{ listing.listing_year_built }}</p>
+            <p> Date listed: {{ listing.listing_date }} </p>
+            <!-- <p> Days on Market: {{ listing.str_days_on_market }} </p> -->
           </div>
         </div>
       </div>
@@ -97,15 +94,13 @@
     <div class="columns">
       <div class="column is-half is-offset-one-quarter">
         <div class="box">
-          <p> Agent License #: {{ listing.agent_license_number }}</p>
+          <!-- TODO ideally this should display the agents contact information. -->
+          <p> Agent License #: {{ agent.agent_license_number }}</p>
           <p> Colisting Agent License #: {{ listing.colisting_agent_license_number }}</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
 
 {% endblock content %}

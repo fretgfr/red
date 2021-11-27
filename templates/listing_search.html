@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+
 <style>
   .listingsearch {
     margin: 10px;
@@ -13,7 +16,7 @@
     <div class="column is-two-thirds">
 
       <head>
-        <h1>Search for House Listing</h1>
+        <h1 class="title">Search for House Listing</h1>
       </head>
     </div>
   </div>
@@ -23,7 +26,37 @@
       <button>Search</button>
     </form>
   </div>
+
+<div class="columns">
+  <div class="column is-10 is-offset-1">
+    <div class="box">
+      <div class="columns">
+      <div class="column is-3">
+      <figure class="image is-128x128">
+        <!-- <img src={{ listing.listing_image_links }}> -->
+        <img
+          src="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2019/2/7/3/BP_HHMTN310_Bolden_home-exterior_AFTER_0132.jpg.rend.hgtvcom.966.644.suffix/1549585070420.jpeg">
+      </figure>
+      </div>
+      <div class="column">
+        <p>{{ listing.listing_address_number }} {{ listing.listing_address_street }}
+          <br>{{ listing.listing_address_city }}, {{ listing.listing_address_state }}
+          <br>{{ listing.listing_address_zip }}</p>
+      </div>
+      <div class="column">
+        <p>{{ listing.listing_price }}</p>
+      </div>
+      <div class="column">
+        <p>{{ listing.listing_status }}</p>
+      </div>
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+
+
+
 
 
 

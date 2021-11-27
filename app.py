@@ -35,14 +35,15 @@ def agent(agent_id):
     Returns:
         rendered html template
     """
+    
 
     try:
         agent_id = int(agent_id)
     except ValueError:
         return "Invalid agent id" #Probaby substitute with a 404 page
 
-    agent = Agent.from_license_number(agent_id)
-    company = Company.from_company_id(agent.company_id)
+    agent = Agent.from_license_number(agent_id,db_connection)
+    company = Company.from_company_id(agent.agent_company_id, db_connection)
 
     return render_template("agent.html", agent=agent, company=company)
 
@@ -62,7 +63,7 @@ def client(client_id: str):
     except ValueError:
         return "Invalid client id" #Probaby substitute with a 404 page
 
-    client = Client.from_client_id(client_id)
+    client = Client.from_client_id(client_id, db_connection)
     return render_template("client.html", client=client)
 
 
@@ -83,7 +84,7 @@ def company_view(company_id: str):
     except ValueError:
         return "Invalid company id" #Probaby substitute with a 404 page
 
-    company = Company.from_company_id(company_id)
+    company = Company.from_company_id(company_id, db_connection)
 
     return render_template("company.html", company=company) #TODO doesn't exist yet
 
@@ -123,6 +124,7 @@ def add_listing():
             half_bathrooms = int(req.get("half_bathrooms"))
             basement_yn = convert_yn(req.get("basementyn"))
             waterfront_yn = convert_yn(req.get("waterfrontyn"))
+            fireplace_yn = convert_yn(req.get("fireplaceyn"))
             pool_yn = convert_yn(req.get("poolyn"))
             garage_yn = convert_yn(req.get("garageyn"))
             ownership = req.get("ownership")
@@ -131,18 +133,17 @@ def add_listing():
             sqft = int(req.get("sqft"))
             acreage = float(req.get("acreage"))
             year_built = int(req.get("year_built"))
-            colist_agent_id = req.get("colist_agent_id")
+            listing_agent_id = int(req.get("listing_agent_id")) #TODO
+            colist_agent_id = int(req.get("colist_agent_id")) if req.get("colist_agent_id") != "-1" else None
+            image_link = req.get("image_link") #TODO 
 
-            with db_connection.cursor() as cursor:
-                # Listing.create_listing() #needs to be filled in and added to listing.py
-                db_connection.commit()
+            listing = Listing.create_listing(db_connection, listing_type, status, description, saleyn, rentyn, price, address_number, address_street, address_city, address_state, address_zip, structure_style, bedrooms, full_bathrooms, half_bathrooms, basement_yn, waterfront_yn, fireplace_yn, garage_yn, pool_yn, ownership, school_district, car_count, sqft, acreage, year_built, listing_date, listing_agent_id, colist_agent_id, image_link)
+
+            return redirect(f"/listing/{listing.listing_mls_number}")
                 
         except ValueError:
             print("Something went wrong here. Most likely in a conversion.")
-            return False
-
-
-        return "Operation Successful" #Ideally this should take them to the page for the created listing
+            return "Something went wrong."
 
     return render_template("add_listing.html") #They're just viewing the form
 
@@ -153,7 +154,7 @@ def edit_listing(listing_id: str):
         #Code to update the listing goes here
         return "Operation Successful"
 
-    listing = Listing.from_listing_id(listing_id)
+    listing = Listing.from_listing_id(listing_id, db_connection)
 
     return render_template("edit_listing.html", listing=listing)
 
@@ -173,8 +174,8 @@ def listing_view(listing_id: str):
         return "Invalid listing id" #Probaby substitute with a 404 page
 
 
-    listing = Listing.from_listing_id(listing_id)
-    agent = Agent.from_license_number(listing.agent_license_number)
+    listing = Listing.from_listing_id(listing_id,db_connection)
+    agent = Agent.from_license_number(listing.listing_agent_license_number, db_connection)
 
     return render_template("listing.html", listing=listing, agent=agent)
 

@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `dbproject`.`LISTING` (
   `listing_date` DATE NOT NULL,
   `listing_agent_license_number` INT NOT NULL,
   `listing_colisting_agent_license_number` INT,
-  `listing_image_links` VARCHAR(45) NOT NULL,
+  `listing_image_links` VARCHAR(500) NOT NULL,
   PRIMARY KEY (`listing_mls_number`))
 ENGINE = InnoDB;
 

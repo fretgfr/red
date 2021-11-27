@@ -22,10 +22,16 @@ form.addEventListener("submit", function (event) {
     let year_built = document.getElementById("year_built");
     let carcount = document.getElementById("carcount");
     let acreage = document.getElementById("acreage");
+    let listagentid = document.getElementById("listing_agent_id");
+    let colistagentid = document.getElementById("colist_agent_id");
+
+    if (colistagentid.value == "") {
+        colistagentid.value = "-1";
+    }
 
     let error = false;
 
-    intval = [price, address_number, address_zip, bedrooms, full_bathrooms, half_bathrooms, sqft, year_built];
+    intval = [price, address_number, address_zip, bedrooms, full_bathrooms, half_bathrooms, sqft, year_built, listagentid, colistagentid];
 
     floatval = [carcount, acreage];
 

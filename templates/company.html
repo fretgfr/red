@@ -21,11 +21,11 @@
   <div class="column is-two-thirds">
 
     <body>
-      <p>ID Number: {{company.company_id}} </p>
-      <p>Office Location: {{company.hq_street}} {{company.hq_city}}, {{company.hq_state}} {{company.hq_zip}}</p>
-      <p>Phone Number: {{company.hq_phone_area}}-{{company.hq_phone_number}}</p>
-      <p>Fax Number: {{company.hq_fax_area}}-{{company.hq_fax_number}}</p>
-      <p>Agent IDs: {{company.agent_ids}}</p>
+      <p>ID Number: {{ company.company_id }} </p>
+      <p>Office Location: {{ company.company_hq_street }} {{ company.company_hq_city }}, {{ company.company_hq_state }} {{ company.company_hq_zip }}</p>
+      <p>Phone Number: {{ company.company_hq_phone_area }}-{{ company.company_hq_phone_number }}</p>
+      <p>Fax Number: {{ company.company_hq_fax_area }}-{{ company.company_hq_fax_number }}</p>
+      <p>Agent IDs: {{ company.AGENT_license_number }}</p>
     </body>
   </div>
 </div>
