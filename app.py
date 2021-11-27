@@ -139,14 +139,11 @@ def add_listing():
 
             listing = Listing.create_listing(db_connection, listing_type, status, description, saleyn, rentyn, price, address_number, address_street, address_city, address_state, address_zip, structure_style, bedrooms, full_bathrooms, half_bathrooms, basement_yn, waterfront_yn, fireplace_yn, garage_yn, pool_yn, ownership, school_district, car_count, sqft, acreage, year_built, listing_date, listing_agent_id, colist_agent_id, image_link)
 
-            print(listing)
+            return redirect(f"/listing/{listing.listing_mls_number}")
                 
         except ValueError:
             print("Something went wrong here. Most likely in a conversion.")
-            return False
-
-
-        return "Operation Successful" #Ideally this should take them to the page for the created listing
+            return "Something went wrong."
 
     return render_template("add_listing.html") #They're just viewing the form
 
