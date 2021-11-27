@@ -63,7 +63,7 @@ def client(client_id: str):
     except ValueError:
         return "Invalid client id" #Probaby substitute with a 404 page
 
-    client = Client.from_client_id(client_id)
+    client = Client.from_client_id(client_id, db_connection)
     return render_template("client.html", client=client)
 
 
