@@ -44,7 +44,7 @@ class Listing:
         with db_connection.cursor(dictionary=True) as cursor:
             listings = []
             cursor.execute("SELECT listing_mls_number FROM LISTING;")
-            for listing in cursor:
+            for listing in cursor.fetchall():
                 listings.append(Listing.from_listing_id(listing['listing_mls_number'], db_connection))
             return listings
 
