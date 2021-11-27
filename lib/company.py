@@ -15,7 +15,7 @@ class Company():
     company_hq_fax_area: int
     company_hq_fax_number: int
     company_license_number: int
-    company_agent_license_number: list
+    AGENT_license_number: list
 
     @classmethod
     def from_company_id(cls, company_id: int, db_connection: mysql.connector.MySQLConnection):
