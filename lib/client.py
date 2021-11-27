@@ -13,7 +13,7 @@ class Client():
     client_phone_number: int
     client_email_address: str
     client_agent_license_number: int
-    LISTING_mls_numbers: int
+    LISTING_mls_number: int
 
     @classmethod
     def from_client_id(cls, client_id: int, db_connection: mysql.connector.MySQLConnection):
