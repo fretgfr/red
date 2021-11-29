@@ -30,9 +30,9 @@ Clone the repository to your local machine and create a file named `config.json`
 ```json
 {
     "user": "username",
-    "password": "pass",
+    "password": "password",
     "database": "databasename",
-    "host": "host.ip.address"
+    "host": "server.host.ip.address"
 }
 ```
 
