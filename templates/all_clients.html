@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+<style>
+  .clientpage {
+    margin: 10px;
+    padding: 10px;
+  }
+</style>
+
+<div class="clientpage">
+  <div class="columns">
+    <div class="column is-two-thirds">
+
+      <head>
+        <h1 class="title"> Client Profile:</h1>
+      </head>
+    </div>
+  </div>
+
+  <!-- Could be temporary, could not be. -->
+  <hr>
+
+  <div class="column is-two-thirds">
+
+    {% for client in clients %}
+    <body>
+      <p>ID Number: {{ client.client_id }} </p>
+      <p>Name: {{ client.client_first_name }} {{ client.client_middle_initial }}. {{ client.client_last_name }}</p>
+      <p>Phone Number: {{ client.client_area_code }}-{{ client.client_phone_number }}</p>
+      <p>Email: {{ client.client_email_address }}</p>
+      <p>Agent ID: {{ client.client_agent_license_number }}</p>
+    </body>
+    <hr>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+{% endblock content %}

@@ -1,0 +1,44 @@
+<!-- reeives a list of Agent named agents -->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+<style>
+  .agentpage {
+    margin: 10px;
+    padding: 10px;
+  }
+</style>
+
+<div class="agentpage">
+  <div class="columns">
+    <div class="column is-two-thirds">
+
+      <head>
+        <h1 class="title"> Agent List</h1>
+      </head>
+    </div>
+  </div>
+
+  <!-- Could be temporary for the rule, maybe not. -->
+  <hr>
+
+  <div class="column is-two-thirds">
+    {% for agent in agents %}
+    <body>
+      <p> Name: {{ agent.agent_first_name }} {{ agent.agent_middle_initial }}. {{ agent.agent_last_name }}</p>
+      <p>License Number: {{ agent.agent_license_number }} </p>
+      <p>Office Phone Number: {{ agent.agent_office_area_code }}-{{ agent.agent_office_phone_number }}</p>
+      <p>Cell Phone Number: {{ agent.agent_mobile_area_code }}-{{ agent.agent_mobile_phone_number }}</p>
+      <p>Email: {{ agent.agent_email_address }}</p>
+      <p>Office Location: {{ agent.agent_office_street }} {{ agent.agent_office_city }}, {{ agent.agent_office_state }}
+        {{ agent.agent_office_zip }}</p>
+      <p>Company ID: {{ agent.agent_company_id }}</p>
+    </body>
+    <hr>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
