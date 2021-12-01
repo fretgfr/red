@@ -229,8 +229,19 @@ def listing_search():
     Returns:
         rendered html template
     """
+    listings = Listing.get_all_listings(db_connection)
 
-    return render_template("listing_search.html")
+    if request.method == "POST":
+        req = request.form
+
+        try:
+            zip_code = int(req.get("listing_address_zip"))
+        except ValueError:
+            return "Invalid zip code"
+        
+        listings = Listing.get_listings_in_zip(db_connection, zip_code)
+
+    return render_template("listing_search.html", listings=listings)
 
 @app.route("/all_agents")
 def all_agents():

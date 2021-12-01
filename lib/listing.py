@@ -40,6 +40,10 @@ class Listing:
     listing_image_links: str
 
     @classmethod
+    def get_listings_in_zip(cls, db_connection: mysql.connector.MySQLConnection, zip_code: int):
+        pass
+    
+    @classmethod
     def get_all_listings(cls, db_connection: mysql.connector.MySQLConnection):
         with db_connection.cursor(dictionary=True) as cursor:
             listings = []
