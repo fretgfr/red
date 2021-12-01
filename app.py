@@ -23,7 +23,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Home page"
+    return render_template("home.html")
 
 @app.route("/agent/<agent_id>")
 def agent(agent_id):
