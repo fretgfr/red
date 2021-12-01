@@ -118,7 +118,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="price" id="price" required>
+                    <input type="text" name="price" id="price" value={{listing.pretty_price}} required>
                 </div>
             </div>
         </div>
@@ -146,7 +146,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="address_street" id="address_street" required>
+                    <input type="text" name="address_street" id="address_street" value= {{listing.listing_address_street}} required>
                 </div>
             </div>
         </div>
@@ -160,7 +160,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="address_city" id="address_city" required>
+                    <input type="text" name="address_city" id="address_city" value={{listing.listing_address_city}} required>
                 </div>
             </div>
         </div>
@@ -174,7 +174,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="address_state" id="address_state" value="MI" required>
+                    <input type="text" name="address_state" id="address_state" value={{listing.listing_address_state}} required>
                 </div>
             </div>
         </div>
@@ -188,7 +188,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="address_zip" id="address_zip" required>
+                    <input type="text" name="address_zip" id="address_zip" value={{listing.listing_address_zip}} required>
                 </div>
             </div>
         </div>
@@ -220,7 +220,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="bedrooms" id="bedrooms" required>
+                    <input type="text" name="bedrooms" id="bedrooms" value={{listing.listing_bedroom_count}} required>
                 </div>
             </div>
         </div>
@@ -234,7 +234,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="full_bathrooms" id="full_bathrooms" required>
+                    <input type="text" name="full_bathrooms" id="full_bathrooms" value={{listing.listing_full_bath_count}} required>
                 </div>
             </div>
         </div>
@@ -248,7 +248,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="half_bathrooms" id="half_bathrooms" required>
+                    <input type="text" name="half_bathrooms" id="half_bathrooms" value={{listing.listing_half_bath_count}} required>
                 </div>
             </div>
         </div>
@@ -363,7 +363,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="school_district" id="school_district" required>
+                    <input type="text" name="school_district" id="school_district" value={{listing.listing_school_district}} required>
                 </div>
             </div>
         </div>
@@ -377,7 +377,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="carcount" id="carcount" required>
+                    <input type="text" name="carcount" id="carcount" value={{listing.listing_garage_car_count}} required>
                 </div>
             </div>
         </div>
@@ -391,7 +391,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="sqft" id="sqft" required>
+                    <input type="text" name="sqft" id="sqft" value={{listing.pretty_sqft}} required>
                 </div>
             </div>
         </div>
@@ -405,7 +405,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="acreage" id="acreage" required>
+                    <input type="text" name="acreage" id="acreage" value={{listing.listing_acreage}} required>
                 </div>
             </div>
         </div>
@@ -419,7 +419,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="year_built" id="year_built" required>
+                    <input type="text" name="year_built" id="year_built" value={{listing.listing_year_built}} required>
                 </div>
             </div>
         </div>
@@ -432,7 +432,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="listing_agent_id" id="listing_agent_id">
+                    <input type="text" name="listing_agent_id" id="listing_agent_id" value={{agent.agent_license_number}} >
                 </div>
             </div>
         </div>
@@ -447,7 +447,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="colist_agent_id" id="colist_agent_id">
+                    <input type="text" name="colist_agent_id" id="colist_agent_id" value={{listing.colisting_agent_license_number}} >
                 </div>
             </div>
         </div>
@@ -460,7 +460,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="image_link" id="image_link">
+                    <input type="text" name="image_link" id="image_link" value={{listing.listing_image_links}} >
                 </div>
             </div>
         </div>
