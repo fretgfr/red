@@ -38,3 +38,11 @@ class Client():
         #Delete a client from the database
          with db_connection.cursor() as cursor:
             cursor.execute("DELETE FROM CLIENT WHERE client_id = %s", (client_id,))
+
+    @classmethod
+    def get_all_clients(cls, db_connection: mysql.connector.MySQLConnection):
+        #Returns all clients
+        with db_connection.cursor(dictionary=True) as cursor:
+            cursor.execute("SELECT * FROM CLIENT")
+            clients = cursor.fetchall()
+            return [cls(**client) for client in clients]

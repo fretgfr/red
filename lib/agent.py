@@ -45,3 +45,10 @@ class Agent():
             agent_data = cursor.fetchone()
             return cls(**agent_data)
         
+    @classmethod
+    def get_all_agents(cls, db_connection: mysql.connector.MySQLConnection):
+        #Returns all agents
+        with db_connection.cursor(dictionary=True) as cursor:
+            cursor.execute("SELECT * FROM AGENT")
+            agents = cursor.fetchall()
+            return [cls(**agent) for agent in agents]

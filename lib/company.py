@@ -32,4 +32,11 @@ class Company():
             cursor.execute("INSERT INTO COMPANY (`company_id`, `company_hq_street`, `company_hq_city`,`company_hq_state`, `company_hq_zip`, `company_hq_phone_area`, `company_hq_phone_number`,`company_hq_fax_area`, `company_hq_fax_number`,`company_license_number`,`AGENT_license_number`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (company_id, hq_street, hq_city, hq_state, hq_zip, hq_phone_area, hq_phone_number, hq_fax_area, hq_fax_number, license_number, agent_ids))
             db_connection.commit()
  
+    @classmethod
+    def get_all_companies(cls, db_connection: mysql.connector.MySQLConnection):
+        #Returns all companies
+        with db_connection.cursor(dictionary=True) as cursor:
+            cursor.execute("SELECT * FROM COMPANY")
+            companies = cursor.fetchall()
+            return [cls(**company) for company in companies]
     
