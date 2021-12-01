@@ -30,11 +30,18 @@
                     </div>
                 </div>
                 <div class="column is-2">
+                    
                     <select name="listing_type" id="listing_type" required>
-                        <option value="sfr">Single Family Residential</option>
-                        <option value="condo">Condominium</option>
-                        <option value="vacant">Vacant Land</option>
+                        {% if listing.listing_type == "sfr" %}
+                        <option value="sfr" selected>Single Family Residential</option>
+                        {% elif listing.listing_type == "condo" %}
+                        <option value="condo"selected>Condominium</option>
+                        {% else %}
+                        <option value="vacant"selected>Vacant Land</option>
+                        {% endif %}
+                        
                     </select>
+                
                 </div>
 
 
@@ -51,10 +58,15 @@
                 </div>
                 <div class="column">
                     <select name="status" id="status" required>
-                        <option value="comingsoon">Coming Soon</option>
-                        <option value="available">Active</option>
-                        <option value="pending">Pending</option>
-                        <option value="closed">Closed</option>
+                        {% if listing.listing_status == "comingsoon" %}
+                        <option value="comingsoon" selected>Coming Soon</option>
+                        {% elif listing.listing_status == "available" %}
+                        <option value="available" selected>Active</option>
+                        {% elif listing.listing_status == "pending" %}
+                        <option value="pending" selected>Pending</option>
+                        {% else %}
+                        <option value="closed" selected>Closed</option>
+                        {% endif %}
                     </select>
                 </div>
             </div>
@@ -69,7 +81,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <textarea name="description" id="description" cols="30" rows="10" required></textarea>
+                    <textarea name="description" id="description" cols="30" rows="10" required>{{listing.listing_description}}</textarea>
                 </div>
             </div>
         </div>
@@ -84,8 +96,13 @@
                 </div>
                 <div class="column">
                     <select name="saleyn" id="saleyn" required>
-                        <option value="yes">Yes</option>
+                        {% if listing.sale == "Yes" %}
+                        <option value="yes" selected>Yes</option>
                         <option value="no">No</option>
+                        {% else %}
+                        <option value="yes">Yes</option>
+                        <option value="no" selected>No</option>
+                        {% endif %}
                     </select>
                 </div>
             </div>
@@ -101,8 +118,13 @@
                 </div>
                 <div class="column">
                     <select name="rentyn" id="rentyn" required>
-                        <option value="yes">Yes</option>
+                        {% if listing.rent == "Yes" %}
+                        <option value="yes" selected>Yes</option>
                         <option value="no">No</option>
+                        {% else %}
+                        <option value="yes">Yes</option>
+                        <option value="no" selected>No</option>
+                        {% endif %}
                     </select>
                 </div>
             </div>
@@ -203,9 +225,13 @@
                 </div>
                 <div class="column">
                     <select name="structure_style" id="structure_style">
-                        <option value="ranch">Ranch</option>
+                        {% if listing.listing_structure_style == "ranch" %}
+                        <option value="ranch" selected>Ranch</option>
+                        {% elif listing.listing_structure_style == "colonial" %}
                         <option value="colonial">Colonial</option>
+                        {% else %}
                         <option value="split">Split Level</option>
+                        {% endif %}
                     </select>
                 </div>
             </div>
@@ -263,8 +289,13 @@
                 </div>
                 <div class="column">
                     <select name="basementyn" id="basementyn" required>
-                        <option value="yes">Yes</option>
+                        {% if listing.basement == "Yes" %}
+                        <option value="yes" selected>Yes</option>
                         <option value="no">No</option>
+                        {% else %}
+                        <option value="yes">Yes</option>
+                        <option value="no" selected>No</option>
+                        {% endif %}
                     </select>
                 </div>
             </div>
@@ -280,8 +311,13 @@
                 </div>
                 <div class="column">
                     <select name="waterfrontyn" id="waterfrontyn" required>
-                        <option value="yes">Yes</option>
+                        {% if listing.waterfront == "Yes" %}
+                        <option value="yes" selected>Yes</option>
                         <option value="no">No</option>
+                        {% else %}
+                        <option value="yes">Yes</option>
+                        <option value="no" selected>No</option>
+                        {% endif %}
                     </select>
                 </div>
             </div>
@@ -296,8 +332,13 @@
                 </div>
                 <div class="column">
                     <select name="fireplaceyn" id="fireplaceyn" required>
-                        <option value="yes">Yes</option>
+                        {% if listing.fireplace == "Yes" %}
+                        <option value="yes" selected>Yes</option>
                         <option value="no">No</option>
+                        {% else %}
+                        <option value="yes">Yes</option>
+                        <option value="no" selected>No</option>
+                        {% endif %}
                     </select>
                 </div>
             </div>
@@ -313,8 +354,13 @@
                 </div>
                 <div class="column">
                     <select name="poolyn" id="poolyn" required>
-                        <option value="yes">Yes</option>
+                        {% if listing.pool == "Yes" %}
+                        <option value="yes" selected>Yes</option>
                         <option value="no">No</option>
+                        {% else %}
+                        <option value="yes">Yes</option>
+                        <option value="no" selected>No</option>
+                        {% endif %}
                     </select>
                 </div>
             </div>
@@ -330,8 +376,13 @@
                 </div>
                 <div class="column">
                     <select name="garageyn" id="garageyn" required>
-                        <option value="yes">Yes</option>
+                        {% if listing.garage == "Yes" %}
+                        <option value="yes" selected>Yes</option>
                         <option value="no">No</option>
+                        {% else %}
+                        <option value="yes">Yes</option>
+                        <option value="no" selected>No</option>
+                        {% endif %}
                     </select>
                 </div>
             </div>
@@ -347,8 +398,11 @@
                 </div>
                 <div class="column">
                     <select name="ownership" id="ownership" required>
+                        {% if listing.listing_ownership == "private" %}
                         <option value="private">Private</option>
+                        {% else %}
                         <option value="bankowned">Bank Owned</option>
+                        {% endif %}
                     </select>
                 </div>
             </div>
