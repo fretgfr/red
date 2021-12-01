@@ -27,6 +27,8 @@
     </form>
   </div>
 
+  <hr>
+
 <div class="columns">
   <div class="column is-two-thirds">
     {% for listing in listings %}
@@ -41,6 +43,8 @@
         <p>Status: {{ listing.listing_status }}</p>
         <p> Full Bathroom Count: {{ listing.listing_full_bath_count }} </p>
         <p> Bedroom Count: {{ listing.listing_bedroom_count }} </p>
+
+        <hr>
         {% endfor %}
   </div>
 </div>
