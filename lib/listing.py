@@ -82,6 +82,14 @@ class Listing:
             cursor.execute("DELETE FROM LISTING WHERE listing_mls_number = %s", (self.listing_mls_number,))
             db_connection.commit()
 
+
+    def search_listing(self, db_connection: mysql.connector.MySQLConnection, address_zip: int):
+        #Searches the listing
+        with db_connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM LISTING WHERE listing_address_zip = %s", (self.listing_address_zip,))
+            db_connection.commit()
+            
+
     @property
     def sale(self) -> str:
         return convert_01_yn(self.listing_sale_yn)
