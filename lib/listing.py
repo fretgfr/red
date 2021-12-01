@@ -78,8 +78,7 @@ class Listing:
         return self
 
            
-
-    def delete_listing(self, db_connection: mysql.connector.MySQLConnection, mls_number: int):
+    def delete_listing(self, db_connection: mysql.connector.MySQLConnection):
         #Deletes the listing
         with db_connection.cursor() as cursor:
             cursor.execute("DELETE FROM LISTING WHERE listing_mls_number = %s", (self.listing_mls_number,))

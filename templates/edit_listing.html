@@ -30,26 +30,26 @@
                     </div>
                 </div>
                 <div class="column is-2">
-                    
+
                     <select name="listing_type" id="listing_type" required>
                         {% if listing.listing_type == "sfr" %}
-                            <option value="sfr" selected>Single Family Residential</option>
+                        <option value="sfr" selected>Single Family Residential</option>
                         {% else %}
-                            <option value="sfr">Single Family Residential</option>
+                        <option value="sfr">Single Family Residential</option>
                         {% endif %}
                         {% if listing.listing_type == "condo" %}
-                            <option value="condo" selected>Condominium</option>
+                        <option value="condo" selected>Condominium</option>
                         {% else %}
-                            <option value="condo">Condominium</option>
+                        <option value="condo">Condominium</option>
                         {% endif %}
                         {% if listing.listing_type == "vacant" %}
                         <option value="vacant" selected>Vacant Land</option>
                         {% else %}
                         <option value="vacant">Vacant Land</option>
                         {% endif %}
-                        
+
                     </select>
-                
+
                 </div>
 
 
@@ -95,7 +95,8 @@
                     </div>
                 </div>
                 <div class="column">
-                    <textarea name="description" id="description" cols="30" rows="10" required>{{listing.listing_description}}</textarea>
+                    <textarea name="description" id="description" cols="30" rows="10"
+                        required>{{listing.listing_description}}</textarea>
                 </div>
             </div>
         </div>
@@ -168,7 +169,8 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="address_number" id="address_number"  value={{listing.listing_address_number}} required>
+                    <input type="text" name="address_number" id="address_number"
+                        value={{listing.listing_address_number}} required>
                 </div>
             </div>
         </div>
@@ -182,7 +184,8 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="address_street" id="address_street" value= {{listing.listing_address_street}} required>
+                    <input type="text" name="address_street" id="address_street"
+                        value={{listing.listing_address_street}} required>
                 </div>
             </div>
         </div>
@@ -196,7 +199,8 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="address_city" id="address_city" value={{listing.listing_address_city}} required>
+                    <input type="text" name="address_city" id="address_city" value={{listing.listing_address_city}}
+                        required>
                 </div>
             </div>
         </div>
@@ -210,7 +214,8 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="address_state" id="address_state" value={{listing.listing_address_state}} required>
+                    <input type="text" name="address_state" id="address_state" value={{listing.listing_address_state}}
+                        required>
                 </div>
             </div>
         </div>
@@ -224,7 +229,8 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="address_zip" id="address_zip" value={{listing.listing_address_zip}} required>
+                    <input type="text" name="address_zip" id="address_zip" value={{listing.listing_address_zip}}
+                        required>
                 </div>
             </div>
         </div>
@@ -282,7 +288,8 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="full_bathrooms" id="full_bathrooms" value={{listing.listing_full_bath_count}} required>
+                    <input type="text" name="full_bathrooms" id="full_bathrooms"
+                        value={{listing.listing_full_bath_count}} required>
                 </div>
             </div>
         </div>
@@ -296,7 +303,8 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="half_bathrooms" id="half_bathrooms" value={{listing.listing_half_bath_count}} required>
+                    <input type="text" name="half_bathrooms" id="half_bathrooms"
+                        value={{listing.listing_half_bath_count}} required>
                 </div>
             </div>
         </div>
@@ -439,7 +447,8 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="school_district" id="school_district" value={{listing.listing_school_district}} required>
+                    <input type="text" name="school_district" id="school_district"
+                        value={{listing.listing_school_district}} required>
                 </div>
             </div>
         </div>
@@ -453,7 +462,8 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="carcount" id="carcount" value={{listing.listing_garage_car_count}} required>
+                    <input type="text" name="carcount" id="carcount" value={{listing.listing_garage_car_count}}
+                        required>
                 </div>
             </div>
         </div>
@@ -508,7 +518,8 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="listing_agent_id" id="listing_agent_id" value={{listing.listing_agent_license_number}} >
+                    <input type="text" name="listing_agent_id" id="listing_agent_id"
+                        value={{listing.listing_agent_license_number}}>
                 </div>
             </div>
         </div>
@@ -525,7 +536,8 @@
                 <div class="column">
 
                     {% if listing.colisting_agent_license_number %}
-                    <input type="text" name="colist_agent_id" id="colist_agent_id" value={{listing.colisting_agent_license_number}}>
+                    <input type="text" name="colist_agent_id" id="colist_agent_id"
+                        value={{listing.colisting_agent_license_number}}>
                     {% else %}
                     <input type="text" name="colist_agent_id" id="colist_agent_id" value=0>
                     {% endif %}
@@ -541,7 +553,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="image_link" id="image_link" value={{listing.listing_image_links}} >
+                    <input type="text" name="image_link" id="image_link" value={{listing.listing_image_links}}>
                 </div>
             </div>
         </div>
@@ -549,21 +561,26 @@
 
         <div class="columns">
             <div class="column is-2">
-                <div></div>
+                <div class="field is-horizontal">
+                    <label for="delete">Delete?</label>
+                </div>
+            </div>
+            <div>
+                <label for="deletey">Yes</label>
+                <input type="radio" name="delete" id="deletey" value="yes">
+                <label for="deleten">No</label>
+                <input type="radio" name="delete" id="deleten" value="no" checked>
             </div>
         </div>
-        <div class="column is-2"></div>
-        <div class="field is-horizontal"></div>
-        <label for="delete">Delete?</label>
 
 
-        <div class="columns">
-            <div class="column is-3">
-                <input type="submit" value="Submit">
-            </div>
-        </div>
+<div class="columns">
+    <div class="column is-3">
+        <input type="submit" value="Submit">
+    </div>
+</div>
 
-    </form>
+</form>
 </div>
 
 {% endblock content %}
