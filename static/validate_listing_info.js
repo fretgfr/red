@@ -31,9 +31,9 @@ form.addEventListener("submit", function (event) {
 
     let error = false;
 
-    intval = [price, address_number, address_zip, bedrooms, full_bathrooms, half_bathrooms, sqft, year_built, listagentid, colistagentid];
+    intval = [price, address_number, address_zip, bedrooms, full_bathrooms, half_bathrooms, carcount, sqft, year_built, listagentid, colistagentid];
 
-    floatval = [carcount, acreage];
+    floatval = [acreage];
 
     intval.forEach(function (val) {
         value = val.value;
