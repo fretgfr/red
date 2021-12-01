@@ -33,11 +33,19 @@
                     
                     <select name="listing_type" id="listing_type" required>
                         {% if listing.listing_type == "sfr" %}
-                        <option value="sfr" selected>Single Family Residential</option>
-                        {% elif listing.listing_type == "condo" %}
-                        <option value="condo"selected>Condominium</option>
+                            <option value="sfr" selected>Single Family Residential</option>
                         {% else %}
-                        <option value="vacant"selected>Vacant Land</option>
+                            <option value="sfr">Single Family Residential</option>
+                        {% endif %}
+                        {% if listing.listing_type == "condo" %}
+                            <option value="condo" selected>Condominium</option>
+                        {% else %}
+                            <option value="condo">Condominium</option>
+                        {% endif %}
+                        {% if listing.listing_type == "vacant" %}
+                        <option value="vacant" selected>Vacant Land</option>
+                        {% else %}
+                        <option value="vacant">Vacant Land</option>
                         {% endif %}
                         
                     </select>
@@ -60,12 +68,18 @@
                     <select name="status" id="status" required>
                         {% if listing.listing_status == "comingsoon" %}
                         <option value="comingsoon" selected>Coming Soon</option>
-                        {% elif listing.listing_status == "available" %}
+                        {% else %}
+                        <option value="comingsoon">Coming Soon</option>
+                        {% endif %}
+                        {% if listing.listing_status == "available" %}
                         <option value="available" selected>Active</option>
-                        {% elif listing.listing_status == "pending" %}
+                        {% else %}
+                        <option value="available">Active</option>
+                        {% endif %}
+                        {% if listing.listing_status == "pending" %}
                         <option value="pending" selected>Pending</option>
                         {% else %}
-                        <option value="closed" selected>Closed</option>
+                        <option value="closed">Closed</option>
                         {% endif %}
                     </select>
                 </div>
@@ -140,7 +154,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="price" id="price" value={{listing.pretty_price}} required>
+                    <input type="text" name="price" id="price" value={{listing.price}} required>
                 </div>
             </div>
         </div>
@@ -227,8 +241,16 @@
                     <select name="structure_style" id="structure_style">
                         {% if listing.listing_structure_style == "ranch" %}
                         <option value="ranch" selected>Ranch</option>
-                        {% elif listing.listing_structure_style == "colonial" %}
+                        {% else %}
+                        <option value="ranch">Ranch</option>
+                        {% endif %}
+                        {% if listing.listing_structure_style == "colonial" %}
+                        <option value="colonial" selected>Colonial</option>
+                        {% else %}
                         <option value="colonial">Colonial</option>
+                        {% endif %}
+                        {% if listing.listing_structure_style == "split" %}
+                        <option value="split" selected>Split Level</option>
                         {% else %}
                         <option value="split">Split Level</option>
                         {% endif %}
@@ -445,7 +467,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="sqft" id="sqft" value={{listing.pretty_sqft}} required>
+                    <input type="text" name="sqft" id="sqft" value={{listing.listing_sqft}} required>
                 </div>
             </div>
         </div>
@@ -501,7 +523,12 @@
                     </div>
                 </div>
                 <div class="column">
-                    <input type="text" name="colist_agent_id" id="colist_agent_id" value={{listing.colisting_agent_license_number}} >
+
+                    {% if %}
+                    <input type="text" name="colist_agent_id" id="colist_agent_id" value={{listing.colisting_agent_license_number}}>
+                    {% else %}
+                    <input type="text" name="colist_agent_id" id="colist_agent_id">
+                    {% endif %}
                 </div>
             </div>
         </div>
