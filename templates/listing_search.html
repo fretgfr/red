@@ -43,7 +43,7 @@
       <p>Status: {{ listing.listing_status }}</p>
       <p> Full Bathroom Count: {{ listing.listing_full_bath_count }} </p>
       <p> Bedroom Count: {{ listing.listing_bedroom_count }} </p>
-
+      <button onclick="location.href = '/listing/{{ listing.listing_mls_number }}';" id="go-to-listing-{{ listing.listing_mls_number }}">View Listing</button>
       <hr>
       {% endfor %}
     </div>
