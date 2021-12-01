@@ -41,8 +41,11 @@ class Listing:
 
     @classmethod
     def get_listings_in_zip(cls, db_connection: mysql.connector.MySQLConnection, zip_code: int):
-        pass
-    
+        with db_connection.cursor(dictionary=True) as cursor:
+            cursor.execute("SELECT * FROM LISTING WHERE listing_address_zip = %s", (zip_code,))
+            listings = cursor.fetchall()
+            return [cls(**listing) for listing in listings]
+
     @classmethod
     def get_all_listings(cls, db_connection: mysql.connector.MySQLConnection):
         with db_connection.cursor(dictionary=True) as cursor:
@@ -80,15 +83,7 @@ class Listing:
         #Deletes the listing
         with db_connection.cursor() as cursor:
             cursor.execute("DELETE FROM LISTING WHERE listing_mls_number = %s", (self.listing_mls_number,))
-            db_connection.commit()
-
-
-    def search_listing(self, db_connection: mysql.connector.MySQLConnection, address_zip: int):
-        #Searches the listing
-        with db_connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM LISTING WHERE listing_address_zip = %s", (self.listing_address_zip,))
-            db_connection.commit()
-            
+            db_connection.commit()            
 
     @property
     def sale(self) -> str:
