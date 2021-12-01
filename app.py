@@ -191,13 +191,12 @@ def edit_listing(listing_id: str):
             listing.listing_image_links = req.get("image_link")
 
             listing.update_listing(db_connection)
+            
+            return redirect(f"/listing/{listing_id}")
 
         except ValueError:
             print("Something went wrong here. Most likely in a conversion.")
             return "Something went wrong."
-
-        return redirect(f"/listing/{listing.listing_mls_number}")
-
 
 
     return render_template("edit_listing.html", listing=listing)
