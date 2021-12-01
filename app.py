@@ -129,7 +129,7 @@ def add_listing():
             garage_yn = convert_yn(req.get("garageyn"))
             ownership = req.get("ownership")
             school_district = req.get("school_district")
-            car_count = float(req.get("carcount"))
+            car_count = int(req.get("carcount"))
             sqft = int(req.get("sqft"))
             acreage = float(req.get("acreage"))
             year_built = int(req.get("year_built"))
@@ -150,11 +150,55 @@ def add_listing():
 @app.route("/listing/<listing_id>/edit", methods=["GET", "POST"])
 def edit_listing(listing_id: str):
 
-    if request.method == "POST":
-        #Code to update the listing goes here
-        return "Operation Successful"
+    try:
+        listing_id = int(listing_id)
+    except ValueError:
+        return "Invalid listing id"
 
     listing = Listing.from_listing_id(listing_id, db_connection)
+
+    if request.method == "POST":
+        try:
+            req = request.form
+
+            listing.listing_type = req.get("listing_type")
+            listing.listing_status = req.get("status")
+            listing.listing_description = req.get("description")
+            listing.listing_sale_yn = convert_yn(req.get("saleyn"))
+            listing.listing_rent_yn = convert_yn(req.get("rentyn"))
+            listing.listing_price = int(req.get("price"))
+            listing.listing_address_number = int(req.get("address_number"))
+            listing.listing_address_street = req.get("address_street")
+            listing.listing_address_city = req.get("address_city")
+            listing.listing_address_state = req.get("address_state")
+            listing.listing_address_zip = int(req.get("address_zip"))
+            listing.listing_structure_style = req.get("structure_style")
+            listing.listing_bedroom_count = int(req.get("bedrooms"))
+            listing.listing_full_bath_count = int(req.get("full_bathrooms"))
+            listing.listing_half_bath_count = int(req.get("half_bathrooms"))
+            listing.listing_basement_yn = convert_yn(req.get("basementyn"))
+            listing.listing_waterfront_yn = convert_yn(req.get("waterfrontyn"))
+            listing.listing_fireplace_yn = convert_yn(req.get("fireplaceyn"))
+            listing.listing_pool_yn = convert_yn(req.get("poolyn"))
+            listing.listing_garage_yn = convert_yn(req.get("garageyn"))
+            listing.listing_ownership = req.get("ownership")
+            listing.listing_school_district = req.get("school_district")
+            listing.listing_garage_car_count = int(req.get("carcount"))
+            listing.listing_above_grade_sqft = int(req.get("sqft"))
+            listing.listing_acreage = float(req.get("acreage"))
+            listing.listing_year_built = int(req.get("year_built"))
+            listing.listing_colisting_agent_license_number = int(req.get("colist_agent_id")) if req.get("colist_agent_id") != "-1" else None
+            listing.listing_image_links = req.get("image_link")
+
+            listing.update_listing(db_connection)
+
+        except ValueError:
+            print("Something went wrong here. Most likely in a conversion.")
+            return "Something went wrong."
+
+        return redirect(f"/listing/{listing.listing_mls_number}")
+
+
 
     return render_template("edit_listing.html", listing=listing)
 
@@ -188,6 +232,27 @@ def listing_search():
     """
 
     return render_template("listing_search.html")
+
+@app.route("/all_agents")
+def all_agents():
+
+    agents = Agent.get_all_agents(db_connection)
+
+    return render_template("all_agents.html", agents=agents)
+
+@app.route("/all_companies")
+def all_companies():
+
+    companies = Company.get_all_companies(db_connection)
+
+    return render_template("all_companies.html", companies=companies)
+
+@app.route("/all_clients")
+def all_clients():
+
+    clients = Client.get_all_clients(db_connection)
+
+    return render_template("all_clients.html", clients=clients)
 
 ###############################################################################
 ################################### Run #######################################
