@@ -231,14 +231,12 @@ def listing_search():
     """
     listings = Listing.get_all_listings(db_connection)
 
-    if request.method == "POST":
-        req = request.form
-
+    zip_code = request.args.get('listing_address_zip')
+    if zip_code:
         try:
-            zip_code = int(req.get("listing_address_zip"))
+            zip_code = int(zip_code)
         except ValueError:
             return "Invalid zip code"
-        
         listings = Listing.get_listings_in_zip(db_connection, zip_code)
 
     return render_template("listing_search.html", listings=listings)
