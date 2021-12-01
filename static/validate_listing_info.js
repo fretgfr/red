@@ -26,7 +26,7 @@ form.addEventListener("submit", function (event) {
     let colistagentid = document.getElementById("colist_agent_id");
 
     if (colistagentid.value == "") {
-        colistagentid.value = "-1";
+        colistagentid.value = "0";
     }
 
     let error = false;
