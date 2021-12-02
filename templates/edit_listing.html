@@ -434,7 +434,12 @@
                 <div class="column">
                     <select name="ownership" id="ownership" required>
                         {% if listing.listing_ownership == "private" %}
+                        <option value="private" selected>Private</option>
+                        {% else %}
                         <option value="private">Private</option>
+                        {% endif %}
+                        {% if listing.listing_ownership == "bankowned" %}
+                        <option value="bankowned" selected>Bank Owned</option>
                         {% else %}
                         <option value="bankowned">Bank Owned</option>
                         {% endif %}
