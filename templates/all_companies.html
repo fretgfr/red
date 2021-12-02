@@ -29,6 +29,7 @@
                 company.company_hq_state }} {{ company.company_hq_zip }}</p>
             <p>Phone Number: {{ company.company_hq_phone_area }}-{{ company.company_hq_phone_number }}</p>
             <p>Fax Number: {{ company.company_hq_fax_area }}-{{ company.company_hq_fax_number }}</p>
+            <button onclick="location.href = '/company/{{ company.company_id }}';" id="go-to-company-{{ company.company_id }}">View Company</button>
         </div>
         <hr>
         {% endfor %}
