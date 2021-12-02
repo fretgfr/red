@@ -41,7 +41,16 @@
               </h1>
               <br>
               <h2 class="subtitle">
-                <p> Status: {{ listing.listing_status }} </p>
+                <p> Status: 
+                  {% if listing.listing_status == "comingsoon" %}
+                  Coming Soon
+                  {% elif listing.listing_status == "available" %}
+                  Active
+                  {% elif listing.listing_status == "pending" %}
+                  Pending
+                  {% else %}
+                  Closed
+                  {% endif %} </p>
                 <p> Sale: {{ listing.sale }} </p>
                 <p> Rent: {{ listing.rent }} </p>
                 <p> Price: {{ listing.pretty_price }} </p>
