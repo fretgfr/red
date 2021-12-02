@@ -79,6 +79,11 @@
                         {% if listing.listing_status == "pending" %}
                         <option value="pending" selected>Pending</option>
                         {% else %}
+                        <option value="pending">Pending</option>
+                        {% endif %}
+                        {% if listing.listing_status == "closed" %}
+                        <option value="closed" selecte>Closed</option>
+                        {% else %}
                         <option value="closed">Closed</option>
                         {% endif %}
                     </select>
