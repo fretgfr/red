@@ -39,8 +39,16 @@
 
       <p>Address: {{ listing.listing_address_number }} {{ listing.listing_address_street }} {{
         listing.listing_address_city }}, {{ listing.listing_address_state }} {{ listing.listing_address_zip }}</p>
-      <p>Price: {{ listing.listing_price }}</p>
-      <p>Status: {{ listing.listing_status }}</p>
+      <p>Price: {{ listing.pretty_price }}</p>
+      <p>Status: {% if listing.listing_status == "comingsoon" %}
+        Coming Soon
+        {% elif listing.listing_status == "available" %}
+        Active
+        {% elif listing.listing_status == "pending" %}
+        Pending
+        {% else %}
+        Closed
+        {% endif %}</p>
       <p> Full Bathroom Count: {{ listing.listing_full_bath_count }} </p>
       <p> Bedroom Count: {{ listing.listing_bedroom_count }} </p>
       <button onclick="location.href = '/listing/{{ listing.listing_mls_number }}';" id="go-to-listing-{{ listing.listing_mls_number }}">View Listing</button>
