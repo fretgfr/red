@@ -63,7 +63,15 @@
           </div>
           <div class="block">
             <p> MLS Number: {{ listing.listing_mls_number }} </p>
-            <p> Listing type: {{ listing.listing_type }} </p>
+            <p>Listing Type:  
+              {% if listing.listing_type == "sfr" %}
+              Single Family Home
+              {% elif listing.listing_type == "condo" %}
+              Condominium
+              {% else %}
+              Vacant
+              {% endif %}
+            </p>
             <p> Original Price: {{ listing.pretty_original_price }} </p>
             <p> Structure Style: {{ listing.listing_structure_style }} </p>
           </div>
