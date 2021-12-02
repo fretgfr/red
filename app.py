@@ -161,7 +161,7 @@ def edit_listing(listing_id: str):
         try:
             req = request.form
 
-            if req.get("delete"):
+            if convert_yn(req.get("delete")):
                 listing.delete_listing(db_connection)
                 return "Listing Deleted"
 
