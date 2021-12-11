@@ -5,6 +5,9 @@ Main application file
 from flask import Flask, render_template, request, redirect
 from datetime import datetime
 import json
+import subprocess
+import platform
+import sys
 import mysql.connector as con
 
 from lib import Agent, Client, Company, Listing, convert_yn
@@ -14,11 +17,25 @@ from lib import Agent, Client, Company, Listing, convert_yn
 ###############################################################################
 
 # config.json holds the credentials for the database
-with open('config.json') as config_file:
-    config = json.load(config_file)
+try:
+    with open('config.json') as config_file:
+        config = json.load(config_file)
+except FileNotFoundError:
+    print("Please create a configuration file named `conffig.json` from the template with the information necessary to connect to your database instance.")
+    if platform.system() == 'Darwin': # macOS
+        subprocess.call(['open', "configtemplate.json"])
+    elif platform.system() == "Windows": # windows
+        subprocess.call(['notepad.exe', 'configtemplate.json'])
+    sys.exit(1)
 
 # Connect to the database
-db_connection = con.connect(**config)
+
+try:
+    db_connection = con.connect(**config)
+except Exception:
+    print("Failed to connect to the database, please check your connection settings and try again.")
+    input()
+    sys.exit(1)
 
 
 ###############################################################################
