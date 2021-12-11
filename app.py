@@ -21,7 +21,7 @@ try:
     with open('config.json') as config_file:
         config = json.load(config_file)
 except FileNotFoundError:
-    print("Please create a configuration file named `conffig.json` from the template with the information necessary to connect to your database instance.")
+    print("Please create a configuration file named `config.json` from the template with the information necessary to connect to your database instance.")
     if platform.system() == 'Darwin': # macOS
         subprocess.call(['open', "configtemplate.json"])
     elif platform.system() == "Windows": # windows
