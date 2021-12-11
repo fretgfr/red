@@ -2,9 +2,8 @@
 Main application file
 """
 
-from flask import Flask, render_template, url_for, request, redirect
-import os
-from datetime import datetime, date
+from flask import Flask, render_template, request, redirect
+from datetime import datetime
 import json
 import mysql.connector as con
 
@@ -29,11 +28,13 @@ db_connection = con.connect(**config)
 # Initialize Flask
 app = Flask(__name__)
 
-
-
 @app.route("/")
 def home():
-    """Returns the home page from home.html"""
+    """Returns the home page for the application
+
+    Returns:
+        str: Rendered html page.
+    """
     return render_template("home.html")
 
 @app.route("/agent/<agent_id>")
@@ -52,7 +53,7 @@ def agent(agent_id: str):
     try:
         agent_id = int(agent_id)
     except ValueError:
-        return "Invalid agent id" #Probaby substitute with a 404 page
+        return "Invalid agent id" # Probaby substitute with a 404 page if time permits
 
     agent = Agent.from_license_number(agent_id,db_connection)
     company = Company.from_company_id(agent.agent_company_id, db_connection)
@@ -74,13 +75,12 @@ def client(client_id: str):
     try:
         client_id = int(client_id)
     except ValueError:
-        return "Invalid client id" #Probaby substitute with a 404 page
+        return "Invalid client id" #Probaby substitute with a 404 page if time permits.
 
     client = Client.from_client_id(client_id, db_connection)
     return render_template("client.html", client=client)
 
 
-#Maybe we need a company search page too?
 @app.route("/company/<company_id>")
 def company_view(company_id: str):
     """Renders a companies information.
@@ -96,11 +96,11 @@ def company_view(company_id: str):
     try:
         company_id = int(company_id)
     except ValueError:
-        return "Invalid company id" #Probaby substitute with a 404 page
+        return "Invalid company id" #Probaby substitute with a 404 page if time permits.
 
     company = Company.from_company_id(company_id, db_connection)
 
-    return render_template("company.html", company=company) #TODO doesn't exist yet
+    return render_template("company.html", company=company)
 
 
 
@@ -149,9 +149,9 @@ def add_listing():
             sqft = int(req.get("sqft"))
             acreage = float(req.get("acreage"))
             year_built = int(req.get("year_built"))
-            listing_agent_id = int(req.get("listing_agent_id")) #TODO
+            listing_agent_id = int(req.get("listing_agent_id"))
             colist_agent_id = int(req.get("colist_agent_id")) if req.get("colist_agent_id") != "0" else None
-            image_link = req.get("image_link") #TODO 
+            image_link = req.get("image_link")
 
             listing = Listing.create_listing(db_connection, listing_type, status, description, saleyn, rentyn, price, address_number, address_street, address_city, address_state, address_zip, structure_style, bedrooms, full_bathrooms, half_bathrooms, basement_yn, waterfront_yn, fireplace_yn, garage_yn, pool_yn, ownership, school_district, car_count, sqft, acreage, year_built, listing_date, listing_agent_id, colist_agent_id, image_link)
 
@@ -159,7 +159,7 @@ def add_listing():
                 
         except ValueError:
             print("Something went wrong here. Most likely in a conversion.")
-            return "Something went wrong."
+            return "Something went wrong." # replace with something more useful if time permits.
 
     return render_template("add_listing.html") #They're just viewing the form
 
@@ -180,7 +180,7 @@ def edit_listing(listing_id: str):
     try:
         listing_id = int(listing_id)
     except ValueError:
-        return "Invalid listing id"
+        return "Invalid listing id" # Probably replace with something more useful if time permits.
 
     listing = Listing.from_listing_id(listing_id, db_connection)
 
@@ -227,7 +227,7 @@ def edit_listing(listing_id: str):
 
         except ValueError:
             print("Something went wrong here. Most likely in a conversion.")
-            return "Something went wrong."
+            return "Something went wrong." # Replace with something more useful if time permits.
 
 
     return render_template("edit_listing.html", listing=listing)
@@ -247,7 +247,7 @@ def listing_view(listing_id: str):
     try:
         listing_id = int(listing_id)
     except ValueError:
-        return "Invalid listing id" #Probaby substitute with a 404 page
+        return "Invalid listing id" #Probaby substitute with a 404 page if time permits.
 
 
     listing = Listing.from_listing_id(listing_id,db_connection)
@@ -282,7 +282,7 @@ def all_agents():
     Uses `Agent.get_all_agents` to get all agents.
 
     Returns:
-        [str]: Rendered html page.
+        str: Rendered html page.
     """
     agents = Agent.get_all_agents(db_connection)
 
@@ -323,5 +323,5 @@ if __name__ == "__main__":
     except Exception as e:
         print(e)
     finally:
-        db_connection.close()
+        db_connection.close() # Cleanup database connection on app termination.
 
