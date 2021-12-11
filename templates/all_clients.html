@@ -26,13 +26,15 @@
   <div class="column is-two-thirds">
 
     {% for client in clients %}
+
     <body>
       <p>ID Number: {{ client.client_id }} </p>
       <p>Name: {{ client.client_first_name }} {{ client.client_middle_initial }}. {{ client.client_last_name }}</p>
       <p>Phone Number: {{ client.client_area_code }}-{{ client.client_phone_number }}</p>
       <p>Email: {{ client.client_email_address }}</p>
       <p>Agent ID: {{ client.client_agent_license_number }}</p>
-      <button onclick="location.href = '/client/{{ client.client_id }}';" id="go-to-client-{{ client.client_id }}">View Client</button>
+      <button onclick="location.href = '/client/{{ client.client_id }}';" id="go-to-client-{{ client.client_id }}">View
+        Client</button>
     </body>
     <hr>
     {% endfor %}

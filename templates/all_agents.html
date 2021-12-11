@@ -27,6 +27,7 @@
 
   <div class="column is-two-thirds">
     {% for agent in agents %}
+
     <body>
       <p> Name: {{ agent.agent_first_name }} {{ agent.agent_middle_initial }}. {{ agent.agent_last_name }}</p>
       <p>License Number: {{ agent.agent_license_number }} </p>
@@ -36,7 +37,8 @@
       <p>Office Location: {{ agent.agent_office_street }} {{ agent.agent_office_city }}, {{ agent.agent_office_state }}
         {{ agent.agent_office_zip }}</p>
       <p>Company ID: {{ agent.agent_company_id }}</p>
-      <button onclick="location.href = '/agent/{{ agent.agent_license_number }}';" id="go-to-agent-{{ agent.agent_license_number }}">View Agent</button>
+      <button onclick="location.href = '/agent/{{ agent.agent_license_number }}';"
+        id="go-to-agent-{{ agent.agent_license_number }}">View Agent</button>
     </body>
     <hr>
     {% endfor %}
