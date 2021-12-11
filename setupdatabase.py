@@ -1,3 +1,7 @@
+"""
+File to run to setup the database.
+"""
+
 import mysql.connector as con
 import json
 

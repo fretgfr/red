@@ -1,3 +1,7 @@
+"""
+Main application file
+"""
+
 from flask import Flask, render_template, url_for, request, redirect
 import os
 from datetime import datetime, date
@@ -9,33 +13,41 @@ from lib import Agent, Client, Company, Listing, convert_yn
 ###############################################################################
 ####################### Setup MySQL Connection ################################
 ###############################################################################
+
+# config.json holds the credentials for the database
 with open('config.json') as config_file:
     config = json.load(config_file)
 
+# Connect to the database
 db_connection = con.connect(**config)
 
 
 ###############################################################################
 ############################# Setup Flask #####################################
 ###############################################################################
+
+# Initialize Flask
 app = Flask(__name__)
+
 
 
 @app.route("/")
 def home():
+    """Returns the home page from home.html"""
     return render_template("home.html")
 
 @app.route("/agent/<agent_id>")
-def agent(agent_id):
-    """Renders the template for an agent
+def agent(agent_id: str):
+    """Renders an agents information.
+    Uses `Agent.from_license_number` to get the agent's information.
+    Uses `Company.from_company_id` to get the agent's company information.
 
     Args:
-        agent_id (str): the agent to render for
+        agent_id (str): The id of the agent to be rendered. Will be converted to an integer for the query.
 
     Returns:
-        rendered html template
-    """
-    
+        str: Rendered html page.
+    """ 
 
     try:
         agent_id = int(agent_id)
@@ -49,14 +61,15 @@ def agent(agent_id):
 
 @app.route("/client/<client_id>")
 def client(client_id: str):
-    """Renders the template for a client
+    """Renders a clients information.
+    Uses `Client.from_client_id` to get the client information.
 
     Args:
-        client_id (str): the client to render for
+        client_id (str): The id of the client to be rendered. Will be converted to an integer for the query.
 
     Returns:
-        rendered html template
-    """
+        str: Rendered html page.
+    """    
 
     try:
         client_id = int(client_id)
@@ -70,14 +83,15 @@ def client(client_id: str):
 #Maybe we need a company search page too?
 @app.route("/company/<company_id>")
 def company_view(company_id: str):
-    """Renders the template for a company
+    """Renders a companies information.
+    Uses `Company.from_company_id` to get the company information.
 
     Args:
-        company_id (str): the company to render for
+        company_id (str): The id of the company to be rendered. Will be converted to an integer for the query.
 
     Returns:
-        rendered html template
-    """
+        str: Rendered html page.
+    """    
 
     try:
         company_id = int(company_id)
@@ -95,11 +109,13 @@ def company_view(company_id: str):
 ###############################################################################
 @app.route("/add_listing", methods=["GET", "POST"])
 def add_listing():
-    """Renders the template to add a listing
+    """Presents the form to add a new listing if a GET request is received.
+    Creates the listing using `Listing.create_listing`
+
 
     Returns:
-    rendered html template
-        """
+        str | redirect: Rendered html page or redirect to page of the listing added.
+    """    
 
     if request.method == "POST": #if they're adding a listing
         try:
@@ -149,7 +165,18 @@ def add_listing():
 
 @app.route("/listing/<listing_id>/edit", methods=["GET", "POST"])
 def edit_listing(listing_id: str):
+    """Presents the form to edit a listing if a GET request is received.
+    Parses updated listing data if a POST request is received.
 
+    Uses `Listing.from_mls_number` to get the listing information.
+    Uses `Listing.update_listing` to update the listing.
+
+    Args:
+        listing_id (str): The id of the listing to be edited. Will be converted to an integer for the query.
+
+    Returns:
+        str | redirect: Rendered html page or redirect to page of the listing edited.
+    """    
     try:
         listing_id = int(listing_id)
     except ValueError:
@@ -207,14 +234,16 @@ def edit_listing(listing_id: str):
 
 @app.route("/listing/<listing_id>")
 def listing_view(listing_id: str):
-    """Renders the template for a listing
+    """Renders the template to view a listing's information.
+    Uses `Listing.from_mls_number` to get the listing information.
+    Uses `Agent.from_license_number` to get the agent information.
 
     Args:
-        listing_id (str): The listing to render
+        listing_id (str): The id of the listing to be viewed. Will be converted to an integer for the query.
 
     Returns:
-        rendered html template
-    """
+        str: Rendered html page.
+    """    
     try:
         listing_id = int(listing_id)
     except ValueError:
@@ -228,11 +257,13 @@ def listing_view(listing_id: str):
 
 @app.route("/listing")
 def listing_search():
-    """Renders the template to search for listings
+    """Renders the template to search for listings.
+    Uses `Listing.get_all_listings` to get all listings.
+    Uses `Listing.get_listings_in_zip` to get listings in a specific zip code.
 
     Returns:
-        rendered html template
-    """
+        str: Rendered html page.
+    """    
     listings = Listing.get_all_listings(db_connection)
 
     zip_code = request.args.get('listing_address_zip')
@@ -247,13 +278,24 @@ def listing_search():
 
 @app.route("/all_agents")
 def all_agents():
+    """Displays all agents in the database.
+    Uses `Agent.get_all_agents` to get all agents.
 
+    Returns:
+        [str]: Rendered html page.
+    """
     agents = Agent.get_all_agents(db_connection)
 
     return render_template("all_agents.html", agents=agents)
 
 @app.route("/all_companies")
 def all_companies():
+    """Displays all companies in the database.
+    Uses `Company.get_all_companies` to get all companies.
+
+    Returns:
+        str: Rendered html page.
+    """
 
     companies = Company.get_all_companies(db_connection)
 
@@ -261,6 +303,12 @@ def all_companies():
 
 @app.route("/all_clients")
 def all_clients():
+    """Displays all clients in the database.
+    Uses `Client.get_all_clients` to get all clients.
+
+    Returns:
+        str: Rendered html page.
+    """    
 
     clients = Client.get_all_clients(db_connection)
 
