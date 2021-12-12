@@ -42,7 +42,7 @@ class Agent():
 
     @classmethod
     def create_agent(cls, db_connection: mysql.connector.MySQLConnection,  license_number: int, first_name: str, middle_initial: str, last_name: str, office_area_code: int, office_phone_number: int, cell_area_code: int, cell_phone_number: int, email_address: str, office_street_address: str, office_city: str, office_state: str, office_zip_code: int, company_id: int, client_ids: list, listing_ids: list):
-        """Creates a client in the database.
+        """Creates a agent in the database.
 
         Args:
             db_connection (mysql.connector.MySQLConnection): The database to operate on.
