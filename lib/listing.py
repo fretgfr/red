@@ -41,6 +41,15 @@ class Listing:
 
     @classmethod
     def get_listings_in_zip(cls, db_connection: mysql.connector.MySQLConnection, zip_code: int):
+        """Retrieves all listings in the provided zip code.
+
+        Args:
+            db_connection (mysql.connector.MySQLConnection): The database to operate on.
+            zip_code (int): The zip code to search in
+
+        Returns:
+            List[Listing]: The retrieved Listings.
+        """
         with db_connection.cursor(dictionary=True) as cursor:
             cursor.execute("SELECT * FROM LISTING WHERE listing_address_zip = %s", (zip_code,))
             listings = cursor.fetchall()
@@ -48,6 +57,14 @@ class Listing:
 
     @classmethod
     def get_all_listings(cls, db_connection: mysql.connector.MySQLConnection):
+        """Retreives all listings from the database.
+
+        Args:
+            db_connection (mysql.connector.MySQLConnection): The database to operate on.
+
+        Returns:
+            List[Listing]: All of the Listings contained in the database.
+        """
         with db_connection.cursor(dictionary=True) as cursor:
             listings = []
             cursor.execute("SELECT listing_mls_number FROM LISTING;")
