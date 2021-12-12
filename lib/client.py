@@ -70,6 +70,7 @@ class Client():
         """
         with db_connection.cursor() as cursor:
             cursor.execute("DELETE FROM CLIENT WHERE client_id = %s", (client_id,))
+            db_connection.commit()
 
     @classmethod
     def get_all_clients(cls, db_connection: mysql.connector.MySQLConnection):
