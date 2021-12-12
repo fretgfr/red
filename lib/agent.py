@@ -23,7 +23,7 @@ class Agent():
 
     @classmethod
     def from_license_number(cls, license_number: int, db_connection: mysql.connector.MySQLConnection):
-        """Retrieves an Agent from the databse using their license number.
+        """Retrieves an Agent from the database using their license number.
 
         Args:
             license_number (int): The license number to search for.
